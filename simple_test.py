@@ -3,7 +3,7 @@
 from parse.parse_utils import (generate_edges_from_question_varibles,
                                 generate_edges_from_conditions)
 from model.graph import Graph
-from solving.dfs_solver import DFSSolver
+from solving.dfs_chemistry_solver import DFSSolver
 
 
 if __name__ == '__main__':
