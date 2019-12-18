@@ -1,30 +1,39 @@
 class Graph:
 
-    '''
-    Description/Definition of Graph Structure and Properties
-    '''
     def __init__(self):
+        '''
+        Description/Definition of Graph Structure and Properties
+        '''
         self.nodes=[]
         self.edges=[]
         self.situated=True
 
-    '''
-    pick one function, and provide this function's input and output
-    '''
+
     def infer_one(self,func, in_edges,out_edges):
+        '''
+        pick one function, and provide this function's input and output
+        :param func:
+        :param in_edges:
+        :param out_edges:
+        :return:
+        '''
         pass
 
 
-    '''
-    maintain the graph structure, including nodes, edges and the relations among them
-    '''
+
     def _update_graph(self):
+        '''
+        maintain the graph structure, including nodes, edges and the relations among them
+        :return:
+        '''
         pass
 
-    '''
-    Split one, maybe generate a cvt node
-    '''
-    def _split_node(self,node):
+    def split_node(self,node):
+        '''
+        Split one, maybe generate a cvt node
+        :param node:
+        :return:
+        '''
         pass
 
     def merge_nodes(self,nodes):

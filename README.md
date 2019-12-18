@@ -25,6 +25,8 @@ There are mainly three parts of this system:
 
             f. infer_one_from_(funcs): solving math equation set ?
 
-    2. solving (chemistry), the algorithm of solving problem, which could be DFS, RL or other algorithm
+    2. solving (also independent with chemistry ?), the algorithm of solving problem, which could be DFS, RL or other algorithm
 
     3. func, all functions implement
+
+The ideal status is these three parts are independent/decoupling/transparent with each other.

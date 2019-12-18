@@ -1,6 +1,12 @@
+import uuid
+
 class Node:
-    def __init__(self):
-        self.id='0000-0000-0000-0000' #a uid
+    def __init__(self,id=None,name=None):
+        if id is not None:
+            self.id=id #a uid
+        else:
+            self.id=str(uuid.uuid1())
+
         self.is_cvt = False
 
         self.in_edges=[]
@@ -10,5 +16,5 @@ class Node:
 
         #buildin property
         self.concept='Substance' #the type of Node
-        self.name='\ce{C2O}'
+        self.name=name
         self.default_value=None #?
