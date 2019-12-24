@@ -16,12 +16,20 @@ if __name__ == '__main__':
 
 
     question_varible_edges=generate_edges_from_question_variables(parsed_question['question_variable'])
+    conditions_edges = generate_edges_from_conditions(parsed_question['conditions'])
+
+    '''
+    #debug parser info
     print("question_varible_edges[0], edge")
     print(question_varible_edges[0].predicate)
     print(question_varible_edges[0].in_node.name)
     print(question_varible_edges[0].out_node.unit)
-    exit(-1)
-    conditions_edges=generate_edges_from_conditions(parsed_question['conditions'])
+    for i,condition_edge in enumerate(conditions_edges):
+        print('condition {}'.format(i))
+        print(condition_edge.predicate)
+        print(condition_edge.in_node.name)
+        print("{}\t{}".format(condition_edge.out_node.value,condition_edge.out_node.unit))
+    '''
 
     graph=Graph.build_graph_from_edges(question_varible_edges+conditions_edges)
     solver=DFSSolver()

@@ -18,3 +18,6 @@ class Node:
         self.concept='Substance' #the type of Node
         self.name=name
         self.default_value=None #?
+
+    def update_edges(self):
+        self.edges = self.in_edges + self.out_edges

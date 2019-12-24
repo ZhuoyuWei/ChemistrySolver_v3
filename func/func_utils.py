@@ -2,6 +2,7 @@ class Func:
 
     name = "Func"
     description = "Basic Function"
+    output_type="None"
 
     def __init__(self):
 
@@ -15,7 +16,18 @@ class Func:
         '''
         raise NotImplementedError
 
-    def func(self):
+    def run_func(self):
+        '''
+        The real functional implement, run immediately
+        :return:
+        '''
+        if not self._sat_running():
+            return None
+
+        raise NotImplementedError
+
+
+    def run_func_by_solving_equation(self):
         '''
         The real functional implement
         :return:
@@ -24,4 +36,3 @@ class Func:
             return None
 
         raise NotImplementedError
-

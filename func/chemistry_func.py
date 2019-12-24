@@ -17,8 +17,12 @@ NAME2CE={"sodium carbonate":"Na2CO3"}
 
 class Func_Name2CE(Func):
     '''
-    just as an example
+    just as an example, CE is a text
     '''
+
+    name = "Name2CE"
+    description = "Convert a substance name to its chemical equation (CE)"
+    output_type="CE"
 
 
     def __init__(self,inputs,outputs=None):
@@ -46,7 +50,7 @@ class Func_Name2CE(Func):
 
         return flag
 
-    def func(self):
+    def run_func(self):
         if not self._sat_running():
             return None
         ce_str=NAME2CE.get(self.substance_name)
@@ -71,7 +75,7 @@ class Func_Mole2Atom(Func):
         return True
         
 
-    def func(self):
+    def run_func(self):
         '''
         The real functional implement
         :return:

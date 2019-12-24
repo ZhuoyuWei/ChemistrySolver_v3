@@ -1,12 +1,17 @@
+from .node import Node
+from .edge import Edge
+
 class Graph:
 
-    def __init__(self):
+    def __init__(self,nodes=[],edges=[],situated=True):
         '''
         Description/Definition of Graph Structure and Properties
         '''
-        self.nodes=[]
-        self.edges=[]
-        self.situated=True
+        self.nodes=nodes
+        self.edges=edges
+        self.situated=situated
+
+        self.id2node={}
 
 
     def infer_one(self,func, in_edges,out_edges):
@@ -48,8 +53,13 @@ class Graph:
         :param edges:
         :return:
         '''
-        graph=Graph()
-        #################
-        ##Non Implement##
-        #################
+        graph=Graph(edges=edges)
+
+        for edge in edges:
+            graph.nodes.append(edge.in_node)
+            graph.id2node[edge.in_node.id]=edge.in_node
+            if edge.out_node is Node:
+                graph.nodes.append(edge.out_node)
+                graph.id2node[edge.out_node.id] = edge.out_node
+
         return graph

@@ -11,5 +11,7 @@ class Edge:
         predicate=triplet[1]
         value=triplet[2]
         edge=Edge(predicate=predicate,in_node=in_node,out_node=value)
+        in_node.out_edges.append(edge)
+        in_node.update_edges()
         return edge
 
