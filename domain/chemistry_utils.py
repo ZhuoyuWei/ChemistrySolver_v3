@@ -62,6 +62,8 @@ class CE:
 
 
 
+
+
 class ChemicalSubstance:
     def __init__(self,elements):
         self.elements=elements
@@ -112,6 +114,8 @@ class ChemicalSubstance:
             res = False
 
         return res
+
+
 
 class ChemicalMixture:
     def __init__(self,substances):

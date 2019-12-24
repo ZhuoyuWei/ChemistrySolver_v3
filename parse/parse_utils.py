@@ -34,3 +34,4 @@ def generate_edges_from_conditions(conditions):
             else:
                 print('debug by zhuoyu, cannot parsed condition = {}'.format(condition))
     return condition_edges
+

@@ -14,15 +14,15 @@ class Graph:
         self.id2node={}
 
 
-    def infer_one(self,func, in_edges,out_edges):
+    def infer_one(self,func):
         '''
         pick one function, and provide this function's input and output
         :param func:
-        :param in_edges:
-        :param out_edges:
         :return:
         '''
-        pass
+        run_res_flag=func.run_func()
+        return run_res_flag
+
 
 
 
@@ -32,6 +32,30 @@ class Graph:
         :return:
         '''
         pass
+
+    def _update_graph_by_nodes(self):
+        '''
+        if the node list is updated out of the graph, you need call this function to update the corresponding edges
+        :return:
+        '''
+        self.edges=[]
+        for node in self.nodes:
+            node.update_edges()
+            self.edges+=node.edges
+
+    def _update_graph_by_edges(self):
+        '''
+        if the edge list is updated out of the graph, you need call this function to update the corresponding nodes
+        :return:
+        '''
+        self.nodes=[]
+        self.id2node={}
+        for edge in self.edges:
+            self.nodes.append(edge.in_node)
+            self.id2node[edge.in_node.id]=edge.in_node
+            if edge.out_node is Node:
+                self.nodes.append(edge.out_node)
+                self.id2node[edge.out_node.id] = edge.out_node
 
     def split_node(self,node):
         '''

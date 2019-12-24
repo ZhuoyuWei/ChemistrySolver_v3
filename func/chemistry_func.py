@@ -11,7 +11,8 @@ How to solve different
 '''
 
 from .func_utils import Func
-from domain.chemistry_utils import PU,CE
+from domain.chemistry_utils import PU,CE,ChemicalSubstance
+from parse.chemistry_parse import ParseSubstance
 
 NAME2CE={"sodium carbonate":"Na2CO3"}
 
@@ -22,7 +23,8 @@ class Func_Name2CE(Func):
 
     name = "Name2CE"
     description = "Convert a substance name to its chemical equation (CE)"
-    output_type="CE"
+    output_type="Chemistry_Substance"
+    input_sat_maps = [["target", "name"]]
 
 
     def __init__(self,inputs,outputs=None):
@@ -30,50 +32,41 @@ class Func_Name2CE(Func):
         self.inputs = inputs
         self.outputs = outputs
 
-        ###for func calc
-        self.substance_name=None
 
 
 
-    def _sat_running(self):
-        '''
-        check whether the inputs can satisfy this func running conditions
-        :return: True | False
-        '''
-        flag=False
-        target_node=self.outputs[0].in_node
-        for input in self.inputs:
-            if input.in_node.id == target_node.id and input.property == 'substance_name':
-                flag=True
-                self.substance_name=input.out_node
-                break
 
-        return flag
+
+
+
 
     def run_func(self):
-        if not self._sat_running():
+        if not self.sat_running():
             return None
-        ce_str=NAME2CE.get(self.substance_name)
-        return CE(ce_str)
-
-
+        ce_str=NAME2CE.get(self.parameters[0].out_node,None)
+        if ce_str == None:
+            ce_str=self.parameters[0].out_node
+        chemistry_substance=ParseSubstance(ce_str)
+        self.outputs[0].out_node=chemistry_substance
+        return (chemistry_substance is not None)
 
 class Func_Mole2Atom(Func):
 
+    name = "Mole2Atom"
+    description = "Calculate the number of Atom from the Mole"
+    output_type="Atom"
+
     def __init__(self,inputs,outputs=None):
         super.__init__()
         self.inputs = inputs
         self.outputs = outputs
 
+    '''
     def _sat_running(self):
-        '''
-        check whether the inputs can satisfy this func running conditions
-        :return: True | False
-        '''
         if len(self.outputs)<1 or self.outputs[0] is None:
             return False
         return True
-        
+    '''
 
     def run_func(self):
         '''

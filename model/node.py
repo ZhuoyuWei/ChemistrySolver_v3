@@ -20,4 +20,12 @@ class Node:
         self.default_value=None #?
 
     def update_edges(self):
+        #add name and concept to edges
+        #name_flag=False
+        #concept_flag=False
+        #for edge in self.out_edges:
+            #if edge.predicate == 'name':
+                #name_flag=True
+            #if edge.predicate == 'concept':
+                #concept_flag=True
         self.edges = self.in_edges + self.out_edges

@@ -1,4 +1,7 @@
 from .solver_utils import Solver
+from model.graph import Graph
+from model.edge import Edge
+from model.node import Node
 
 class DFSSolver(Solver):
     def __init__(self,graph,func_list):
@@ -18,11 +21,14 @@ class DFSSolver(Solver):
                     self.func_indexed_by_return_type[func.output_type]=[]
                 self.func_indexed_by_return_type[func.func.output_type]=func
 
+    def _dfs(self,target_edge):
+        target_type=target_edge.predicate
+
+
 
     def solving(self,target_edge):
         '''
-        dfs on graph
+        dfs on graph, the input always the edges of the graph, and after produce a new edge, put it into the edges
         :param target_edge:
         :return:
         '''
-        pass
