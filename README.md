@@ -30,3 +30,14 @@ There are mainly three parts of this system:
     3. func, all functions implement
 
 The ideal status is these three parts are independent/decoupling/transparent with each other.
+
+    New features:
+    1. Separated graph definition [Done]
+    2. Separated function definition [Done]
+    3. Separated solver definition [Done]
+    4. Retire CVT, use Compound Node instead [Pending]
+    5. Retire set const method, use solving equation set instead [Pending]
+    6. RL based Solver [Pending]
+    7. Predicated normalized by/align to Satori Ontology [Pending]
+    8. More domain functions [Pending]
+    9. Extends to structural predicates or merge function and predicate into a universal framework [Pending]
