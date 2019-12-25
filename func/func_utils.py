@@ -3,16 +3,16 @@ class Func:
 
     name = "Func"
     description = "Basic Function"
-    output_type="None"
+    output_type="None" #should be a predicate
 
     input_sat_maps=[["node_1","mass"],["node_1","molarity"],["node2","mass"],["target","mass"]] #just an example
 
 
 
-    def __init__(self):
+    def __init__(self,inputs,outputs=None):
 
-        self.inputs = None
-        self.outputs = None
+        self.inputs = inputs
+        self.outputs = outputs
         self.target_node=None
         self.input_unsat_map=None
         self.parameters=[]
@@ -53,18 +53,6 @@ class Func:
                 if self.parameters[i] is None:
                     self.input_unsat_map.append(tmplist[i])
             return False
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

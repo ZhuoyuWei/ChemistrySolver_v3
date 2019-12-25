@@ -5,6 +5,7 @@ from parse.parse_utils import (generate_edges_from_question_variables,
                                 generate_edges_from_conditions)
 from model.graph import Graph
 from solving.dfs_solver import DFSSolver
+from func.chemistry_func import (Func_Name2CE, Func_Mole2Atom,Func_CE2MolarMass,Func_Mass2Mole)
 
 
 if __name__ == '__main__':
@@ -32,8 +33,16 @@ if __name__ == '__main__':
     '''
 
     graph=Graph.build_graph_from_edges(question_varible_edges+conditions_edges)
-    solver=DFSSolver()
+    graph.print_all_edges()
+    graph.add_name_into_edges_for_all_node()
+    graph.print_all_edges()
+    func_list=[Func_Name2CE, Func_Mole2Atom,Func_CE2MolarMass,Func_Mass2Mole]
+    solver=DFSSolver(graph,func_list)
     for question_edge in question_varible_edges:
-        solver.solving(question_edge)
+        solved_flag=solver.solving(question_edge)
         #check solving result:
+        if solved_flag:
+            print('Final Result: {} {}'.format(question_edge.out_node.value,question_edge.out_node.unit))
+        else:
+            print('unsolved')
 

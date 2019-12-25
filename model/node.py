@@ -7,7 +7,7 @@ class Node:
         else:
             self.id=str(uuid.uuid1())
 
-        self.is_cvt = False
+        self.is_cvt = False #I want to retire the CVT, change it to more general CompoundNode
 
         self.in_edges=[]
         self.out_edges=[]
@@ -18,6 +18,7 @@ class Node:
         self.concept='Substance' #the type of Node
         self.name=name
         self.default_value=None #?
+
 
     def update_edges(self):
         #add name and concept to edges
