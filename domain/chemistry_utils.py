@@ -9,6 +9,12 @@ class PU:
         self.value=value
         self.unit=unit
 
+    def __str__(self):
+        return '{} {}'.format(self.value,self.unit)
+
+    def __repr__(self):
+        return '{} {}'.format(self.value,self.unit)
+
     @classmethod
     def _merge_num(cls,s):
         tokens = s.strip().split()
@@ -33,25 +39,55 @@ class PU:
 
     @classmethod
     def parse_from_text(cls,text):
-        pu_pattern = re.compile(r"pu \{(.*?)\}")
-        pu_match = pu_pattern.search(text)
+        #\\pu{}
+        if text.startswith(r'\\pu') or text.startswith(r'\\\\pu'):
 
-        if pu_match:
-            value_str=pu_match.group(1)
-            #print('before {}'.format(value_str))
-            value_str=cls._merge_num(value_str).strip()
-            #print('{}'.format(value_str))
-            unit_regex = re.compile(r"([0-9e+\-.]+) ([a-zA-Z]+)$")
-            unit_match = unit_regex.search(value_str)
+            pu_pattern = re.compile(r"pu \{(.*?)\}")
+            pu_match = pu_pattern.search(text)
 
-            if unit_match:
-                print(value_str)
+            if pu_match:
+                value_str=pu_match.group(1)
+                #print('before {}'.format(value_str))
+                value_str=cls._merge_num(value_str).strip()
+                #print('{}'.format(value_str))
+                unit_regex = re.compile(r"([0-9e+\-.]+) ([a-zA-Z]+)$")
+                unit_match = unit_regex.search(value_str)
+
+                if unit_match:
+                    print(value_str)
+                    try:
+                        value=float(unit_match.group(1))
+                        unit=unit_match.group(2)
+                        return PU(value,unit)
+                    except:
+                        return None
+        #raw text
+        else:
+            '''
+            answer=text.split()
+            unit_index = len(answer)
+            answer_unit = None
+            answer_value = 0
+            while unit_index > 0:
+                answer_value = ''.join(answer[:unit_index])
+                flag = True
                 try:
-                    value=float(unit_match.group(1))
-                    unit=unit_match.group(2)
-                    return PU(value,unit)
+                    answer_value = float(answer_value)
                 except:
-                    return None
+                    flag = False
+                if flag:
+                    answer_unit = ' '.join(answer[unit_index:])
+                    break
+                unit_index -= 1
+            '''
+            tokens=text.split()
+            try:
+                value = float(tokens[0])
+                unit = ' '.join(tokens[1:])
+                return PU(value, unit)
+            except:
+                return None
+
 
         return None
 

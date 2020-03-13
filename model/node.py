@@ -19,6 +19,11 @@ class Node:
         self.name=name
         self.default_value=None #?
 
+    def __str__(self):
+        return self.name if self.name is not None else self.id
+
+    def __repr__(self):
+        return self.name if self.name is not None else self.id
 
     def update_edges(self):
         #add name and concept to edges

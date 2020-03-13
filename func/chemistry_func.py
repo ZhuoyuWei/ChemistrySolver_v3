@@ -29,7 +29,7 @@ class Func_Name2CE(Func):
 
 
     def __init__(self,inputs,outputs=None):
-        super().__init__(inputs,outputs)
+        super(Func_Name2CE,self).__init__(inputs,outputs)
 
 
     def run_func(self):
@@ -51,7 +51,7 @@ class Func_Mole2Atom(Func):
     output_type="Atom"
 
     def __init__(self,inputs,outputs=None):
-        super().__init__()
+        super(Func_Mole2Atom,self).__init__()
         self.inputs = inputs
         self.outputs = outputs
 
@@ -79,12 +79,12 @@ class Func_CE2MolarMass(Func):
 
     name = "Name2MolarMass"
     description = "from the CE of a substance to its MolarMass"
-    output_type="MolarMass"
+    output_type="molar_mass"
     input_sat_maps = [["target", "Chemistry_Substance"]]
 
 
     def __init__(self,inputs,outputs=None):
-        super().__init__(inputs,outputs)
+        super(Func_CE2MolarMass,self).__init__(inputs,outputs)
 
 
     def run_func(self):
@@ -109,12 +109,12 @@ class Func_Mass2Mole(Func):
 
     name = "Mass2Mole"
     description = "mole=mass/molar_mass"
-    output_type="Mole"
-    input_sat_maps = [["target", "MolarMass"],["target","Mass"]]
+    output_type="mole"
+    input_sat_maps = [["target", "molar_mass"],["target","mass"]]
 
 
     def __init__(self,inputs,outputs=None):
-        super().__init__(inputs,outputs)
+        super(Func_Mass2Mole,self).__init__(inputs,outputs)
 
 
     def run_func(self):
