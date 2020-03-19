@@ -1,7 +1,7 @@
 from .node import Node
 from .edge import Edge
 
-class Graph:
+class Graph(object):
 
     def __init__(self,nodes=[],edges=[],situated=True):
         '''
@@ -74,8 +74,9 @@ class Graph:
 
     #debug
     def print_all_edges(self):
-        for i,edge in enumerate(self.edges):
-            print('{}\t{}\t{}\t{}'.format(i,edge.in_node.id,edge.predicate,edge.out_node))
+        print('{} nodes and {} edges'.format(len(self.nodes),len(self.edges)))
+        #for i,edge in enumerate(self.edges):
+        #    print('{}\t{}\t{}\t{}'.format(i,edge.in_node.id,edge.predicate,edge.out_node))
 
     def add_name_into_edges_for_all_node(self):
         for node in self.nodes:
@@ -93,8 +94,10 @@ class Graph:
         :param edges:
         :return:
         '''
-        graph=Graph(edges=edges)
 
+        graph=cls(nodes=[],edges=edges,situated=True)
+        #graph=cls()
+        print('in build graph : nodes={}, edges={}'.format(len(graph.nodes),len(graph.edges)))
         for edge in edges:
             graph.nodes.append(edge.in_node)
             graph.id2node[edge.in_node.id]=edge.in_node

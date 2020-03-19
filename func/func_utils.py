@@ -1,4 +1,6 @@
 import copy
+from domain.chemistry_utils import PU
+
 class Func:
 
     name = "Func"
@@ -31,6 +33,11 @@ class Func:
 
         fill_count=0
         for input_edge in self.inputs:
+            #print('DEBUG in sat_running {} flag = {} and type = {}'.format(input_edge.out_node,
+            #        (type(input_edge.out_node) is PU and input_edge.out_node.value is None),
+            #         type(input_edge.out_node)))
+            if type(input_edge.out_node) is PU and input_edge.out_node.value is None:
+                continue
             for i,parameter in enumerate(self.input_unsat_map):
                 if self.parameters[i]:
                     continue
@@ -42,6 +49,8 @@ class Func:
                         break
             if fill_count >= len(self.parameters):
                 break
+
+        print('DEBUG in sat_running: parameters={}'.format(self.parameters))
 
         if fill_count >= len(self.parameters):
             self.input_unsat_map=[]

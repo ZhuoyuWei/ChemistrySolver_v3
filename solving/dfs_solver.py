@@ -36,7 +36,8 @@ class DFSSolver(Solver):
     def _dfs(self,target_edge,depth):
         target_type=target_edge.predicate
         Func_classes=self.func_indexed_by_return_type.get(target_type,None)
-        print('debug by zhuoyu target_type={}'.format(target_type))
+        #print('debug by zhuoyu target_type={}'.format(target_type))
+        #print('debug by zhuoyu func_classes={}'.format(Func_classes))
         if Func_classes is None:
             return False
         for Func_cand in Func_classes:

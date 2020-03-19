@@ -41,6 +41,7 @@ class PU:
     def parse_from_text(cls,text):
         #\\pu{}
         if text.startswith(r'\\pu') or text.startswith(r'\\\\pu'):
+            print('in PU')
 
             pu_pattern = re.compile(r"pu \{(.*?)\}")
             pu_match = pu_pattern.search(text)
