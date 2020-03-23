@@ -10,6 +10,9 @@ R_in_PV_equal_nRT_latm=0.0820574587
 ATM=101.325
 
 class PU:
+
+    mention2unit=None
+
     def __init__(self,value=None,unit=None):
         self.value=value
         self.unit=unit
@@ -90,6 +93,9 @@ class PU:
             try:
                 value = float(tokens[0])
                 unit = ' '.join(tokens[1:])
+                if unit.endswith('.') or unit.endswith(',') or unit.endswith('?'):
+                    unit=unit[:-1]
+                unit=cls.get_unit_from_mention(unit)
                 print("[[debug in parsing]]: value=[{}], unit=[{}]".format(value,unit))
                 return PU(value, unit)
             except:
@@ -97,6 +103,26 @@ class PU:
 
 
         return None
+    @classmethod
+    def read_mention2unit_from_tsv(cls):
+        cls.mention2unit={}
+        with open('domain/resources/units.tsv','r',encoding='utf-8') as f:
+            for line in f:
+                ss=line.strip().split('\t')
+                if len(ss) == 2:
+                    cls.mention2unit[ss[0]]=ss[1].replace(' ','_')
+
+    @classmethod
+    def get_unit_from_mention(cls,mention):
+        if cls.mention2unit is None:
+            cls.read_mention2unit_from_tsv()
+        if mention in cls.mention2unit:
+            return cls.mention2unit[mention]
+        elif mention.lower() in cls.mention2unit:
+            return cls.mention2unit[mention.lower()]
+        else:
+            return mention
+
 
 class CE:
     def __init__(self,ce_str,type='substance'):

@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="39 functions update">
-      <change afterPath="$PROJECT_DIR$/domain/resources/Substance2Formula.tsv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/domain/resources/__init__.py" afterDir="false" />
+    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="add unit processing to all implemented functions">
+      <change afterPath="$PROJECT_DIR$/domain/resources/units.tsv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/domain/chemistry_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/chemistry_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/adaption/old_funcs.ori.bak" beforeDir="false" afterPath="$PROJECT_DIR$/func/adaption/old_funcs.ori.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/chemistry_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/chemistry_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/func_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/func_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse/parse_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/parse_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,15 +42,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="py" value="8220" />
+          <entry key="py" value="8722" />
           <entry key="tsv" value="2" />
-          <entry key="txt" value="65" />
+          <entry key="txt" value="113" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="70" />
-          <entry key="Python" value="8220" />
+          <entry key="PLAIN_TEXT" value="118" />
+          <entry key="Python" value="8722" />
         </counts>
       </usages-collector>
     </session>
@@ -99,8 +94,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+            <state relative-caret-position="397">
+              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
             </state>
           </provider>
         </entry>
@@ -447,12 +442,18 @@
       <option name="project" value="LOCAL" />
       <updated>1584580977078</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add unit processing to all implemented functions">
+      <created>1584956237193</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584956237193</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1519" height="977" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25978407" />
       <window_info id="Favorites" order="1" side_tool="true" />
@@ -486,7 +487,8 @@
     <MESSAGE value="solved the simple test end2end" />
     <MESSAGE value="adapt to new parser/extractor format" />
     <MESSAGE value="39 functions update" />
-    <option name="LAST_COMMIT_MESSAGE" value="39 functions update" />
+    <MESSAGE value="add unit processing to all implemented functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add unit processing to all implemented functions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/model/HyperGraph.py" />
@@ -694,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+        <state relative-caret-position="397">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
         </state>
       </provider>
     </entry>
