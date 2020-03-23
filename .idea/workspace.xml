@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="add unit processing to all implemented functions">
-      <change afterPath="$PROJECT_DIR$/domain/resources/units.tsv" afterDir="false" />
+    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="add menton to unit mechanism to parsing PU">
+      <change afterPath="$PROJECT_DIR$/domain/math_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/batch_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/domain/chemistry_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/chemistry_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func/adaption/reminder_old.log" beforeDir="false" afterPath="$PROJECT_DIR$/func/adaption/reminder_old.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func/chemistry_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/chemistry_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parse/chemistry_parse.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/chemistry_parse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parse/parse_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/parse_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,41 +34,42 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bak" value="2" />
-          <entry key="log" value="1" />
-          <entry key="py" value="69" />
+          <entry key="log" value="2" />
+          <entry key="py" value="80" />
           <entry key="tsv" value="4" />
           <entry key="vocabs" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="69" />
+          <entry key="PLAIN_TEXT" value="10" />
+          <entry key="Python" value="80" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="py" value="8722" />
+          <entry key="log" value="61" />
+          <entry key="py" value="11319" />
           <entry key="tsv" value="2" />
-          <entry key="txt" value="113" />
+          <entry key="txt" value="173" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="118" />
-          <entry key="Python" value="8722" />
+          <entry key="PLAIN_TEXT" value="239" />
+          <entry key="Python" value="11319" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-250">
-              <caret line="468" column="15" selection-start-line="468" selection-start-column="15" selection-end-line="468" selection-end-column="15" />
+            <state relative-caret-position="438">
+              <caret line="112" column="101" selection-start-line="112" selection-start-column="101" selection-end-line="112" selection-end-column="101" />
               <folding>
                 <element signature="e#168#179#0" expanded="true" />
               </folding>
@@ -70,32 +78,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/func_utils.py">
+        <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+            <state relative-caret-position="609">
+              <caret line="92" column="18" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="34" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <marker date="1584955051657" expanded="true" signature="2876:3178" ph="..." />
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1584974966570" expanded="true" signature="3396:3401" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
             </state>
           </provider>
         </entry>
@@ -124,6 +114,11 @@
       <find>&quot;ka&quot;</find>
       <find>input_sat_maps</find>
       <find>[&quot;target&quot;, &quot;name&quot;]</find>
+      <find>equilibrium_constant_k</find>
+      <find>actual_yield</find>
+      <find>fx = Formula()</find>
+      <find>&quot;formula&quot;</find>
+      <find>Chemistry_Substance</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,7 +137,6 @@
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/utils/chemistry_utils.py" />
         <option value="$PROJECT_DIR$/func/tt.py" />
-        <option value="$PROJECT_DIR$/parse/chemistry_parse.py" />
         <option value="$PROJECT_DIR$/func/math_func.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/model/edge.py" />
@@ -150,21 +144,25 @@
         <option value="$PROJECT_DIR$/func/func_convert_tool.py" />
         <option value="$PROJECT_DIR$/func/adaption/old_funcs.tsv" />
         <option value="$PROJECT_DIR$/func/adaption/headers.py" />
-        <option value="$PROJECT_DIR$/func/adaption/old_funcs.py" />
         <option value="$PROJECT_DIR$/func/adaption/funcs.tsv" />
         <option value="$PROJECT_DIR$/func/adaption/new_funcs.py" />
-        <option value="$PROJECT_DIR$/func/__init__.py" />
         <option value="$PROJECT_DIR$/simple_test.py" />
         <option value="$PROJECT_DIR$/solving/dfs_solver.py" />
-        <option value="$PROJECT_DIR$/batch_test.py" />
         <option value="$PROJECT_DIR$/tt.py" />
         <option value="$PROJECT_DIR$/model/graph.py" />
         <option value="$PROJECT_DIR$/func/adaption/func_convert_tool.py" />
         <option value="$PROJECT_DIR$/func/adaption/old_funcs.ori.bak" />
-        <option value="$PROJECT_DIR$/parse/parse_utils.py" />
         <option value="$PROJECT_DIR$/func/func_utils.py" />
-        <option value="$PROJECT_DIR$/func/chemistry_func.py" />
+        <option value="$PROJECT_DIR$/func/adaption/old_funcs.py" />
+        <option value="$PROJECT_DIR$/func/adaption/reminder_old.log" />
+        <option value="$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py" />
+        <option value="$PROJECT_DIR$/func/__init__.py" />
+        <option value="$PROJECT_DIR$/parse/parse_utils.py" />
+        <option value="$PROJECT_DIR$/parse/chemistry_parse.py" />
+        <option value="$PROJECT_DIR$/domain/math_utils.py" />
         <option value="$PROJECT_DIR$/domain/chemistry_utils.py" />
+        <option value="$PROJECT_DIR$/batch_test.py" />
+        <option value="$PROJECT_DIR$/func/chemistry_func.py" />
       </list>
     </option>
   </component>
@@ -189,12 +187,6 @@
               <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
               <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
@@ -252,7 +244,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.simple_test">
+  <component name="RunManager" selected="Python.collect_function_names_from_chemistry_func">
+    <configuration name="collect_function_names_from_chemistry_func" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ChemistrySolver_v3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/func/adaption" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="dfs_solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ChemistrySolver_v3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -337,41 +350,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tt" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ChemistrySolver_v3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/func" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/func/tt.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.simple_test" />
-      <item itemvalue="Python.tt" />
       <item itemvalue="Python.dfs_solver" />
       <item itemvalue="Python.func_convert_tool" />
       <item itemvalue="Python.tt (1)" />
+      <item itemvalue="Python.collect_function_names_from_chemistry_func" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.collect_function_names_from_chemistry_func" />
         <item itemvalue="Python.simple_test" />
         <item itemvalue="Python.tt (1)" />
         <item itemvalue="Python.func_convert_tool" />
         <item itemvalue="Python.dfs_solver" />
-        <item itemvalue="Python.tt" />
       </list>
     </recent_temporary>
   </component>
@@ -449,15 +441,23 @@
       <option name="project" value="LOCAL" />
       <updated>1584956237193</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add menton to unit mechanism to parsing PU">
+      <created>1584964271019</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1584964271019</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1519" height="977" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25978407" />
-      <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info id="Structure" order="2" weight="0.24966262" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info id="Structure" order="1" weight="0.24966262" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.19298245" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32819906" />
@@ -488,7 +488,8 @@
     <MESSAGE value="adapt to new parser/extractor format" />
     <MESSAGE value="39 functions update" />
     <MESSAGE value="add unit processing to all implemented functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="add unit processing to all implemented functions" />
+    <MESSAGE value="add menton to unit mechanism to parsing PU" />
+    <option name="LAST_COMMIT_MESSAGE" value="add menton to unit mechanism to parsing PU" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/model/HyperGraph.py" />
@@ -505,13 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/math_func.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -563,20 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/func/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/adaption/old_funcs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="1" column="21" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solving/solver_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -588,13 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
           <caret line="653" column="37" lean-forward="true" selection-start-line="653" selection-start-column="37" selection-end-line="653" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/adaption/reminder_old.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -636,13 +609,6 @@
     <entry file="file://$PROJECT_DIR$/func/adaption/old_funcs.ori.bak">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simple_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -653,18 +619,25 @@
     <entry file="file://$PROJECT_DIR$/online_test.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/batch_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/func/physical_func.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/resources/Substance2Formula.tsv">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/adaption/old_funcs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/adaption/reminder_old.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/func/func_utils.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -677,27 +650,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
+    <entry file="file://$PROJECT_DIR$/func/math_func.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
-          <caret line="468" column="15" selection-start-line="468" selection-start-column="15" selection-end-line="468" selection-end-column="15" />
-          <folding>
-            <element signature="e#168#179#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="399">
+          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="50" column="54" lean-forward="true" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        <state relative-caret-position="588">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <marker date="1584975391838" expanded="true" signature="53:58" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="365">
+          <caret line="255" column="29" selection-start-line="255" selection-start-column="29" selection-end-line="255" selection-end-column="29" />
+          <folding>
+            <element signature="e#161#4891#0" />
+            <element signature="e#5036#6791#0" />
+            <element signature="e#6822#7664#0" />
+            <element signature="e#8893#12047#0" />
+            <marker date="1584975663353" expanded="true" signature="8110:8146" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+          <folding>
+            <element signature="e#80#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="92" column="18" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1584974966570" expanded="true" signature="3396:3401" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="112" column="101" selection-start-line="112" selection-start-column="101" selection-end-line="112" selection-end-column="101" />
+          <folding>
+            <element signature="e#168#179#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

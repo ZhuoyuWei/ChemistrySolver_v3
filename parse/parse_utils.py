@@ -17,14 +17,15 @@ def generate_edges_from_question_variables(question_varaibles):
                                                       variable['value']['predicate'],
                                                       PU(unit=variable['value']['unit'])])
         elif variable['type'] == 'chemical formula':
-            Edge.generate_edge_from_triplet([variable['value']['subject'],
+            edge=Edge.generate_edge_from_triplet([variable['value']['subject'],
                                              variable['value']['predicate'],
                                              None])
         elif variable['type'] == 'chemical equation':
             #print("Haven't implement chemical equation")
-            Edge.generate_edge_from_triplet([variable['value']['subject'],
+            edge=Edge.generate_edge_from_triplet([variable['value']['subject'],
                                              variable['value']['predicate'],
                                              None])
+
         elif variable['type'] == 'other':
             pass
 
@@ -36,6 +37,7 @@ def generate_edges_from_question_variables(question_varaibles):
 def generate_edges_from_conditions(conditions):
     condition_edges=[]
     for condition in conditions:
+        edge=None
         if condition["type"] == "physical unit":
             #physical_unit_pattern=re.compile(r"([\w ]+) \[OF\] ([\w ]+) \[=\](.*)")
             #physical_unit_match=physical_unit_pattern.search(condition['value'])
@@ -45,20 +47,17 @@ def generate_edges_from_conditions(conditions):
                     edge=Edge.generate_edge_from_triplet([condition['value']['subject'],
                                                           condition['value']['predicate'],
                                                           parsed_PU])
-                    condition_edges.append(edge)
+
             else:
                 print('debug by zhuoyu, cannot parsed condition = {}'.format(condition))
-        '''
-        elif condition['type'] == 'chemical formula':
-            Edge.generate_edge_from_triplet([condition['value']['subject'],
-                                             variable['value']['predicate'],
-                                             None])
-        elif condition['type'] == 'chemical equation':
-            # print("Haven't implement chemical equation")
-            Edge.generate_edge_from_triplet([variable['value']['subject'],
-                                             variable['value']['predicate'],
-                                             None])
-        '''
+
+        elif condition['type'] == 'chemical formula' \
+                or condition['type'] == 'chemical equation':
+            edge=Edge.generate_edge_from_triplet([condition['value']['subject'],
+                                             condition['value']['predicate'],
+                                             condition['value']['value']])
+        if edge is not None:
+            condition_edges.append(edge)
 
     return condition_edges
 

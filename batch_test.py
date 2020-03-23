@@ -10,6 +10,7 @@ from parse.parse_utils import (generate_edges_from_question_variables,
 from model.graph import Graph
 from solving.dfs_solver import DFSSolver
 from func import CHEMISTRY_FUNC_LIST
+from domain.chemistry_utils import PU,ChemicalEquation
 
 def solve_one_question(parsed_question):
 
@@ -34,7 +35,12 @@ def solve_one_question(parsed_question):
         #check solving result:
         if solved_flag:
             #print('Final Result: {} {}'.format(question_edge.out_node.value,question_edge.out_node.unit))
-            predicted='{} {}'.format(question_edge.out_node.value,question_edge.out_node.unit)
+            if isinstance(question_edge.out_node,PU):
+                predicted='{} {}'.format(question_edge.out_node.value,question_edge.out_node.unit)
+            elif isinstance(question_edge.out_node,ChemicalEquation):
+                predicted = question_edge.out_node.to_str()
+            else:
+                predicted=str(question_edge.out_node)
         else:
             print('unsolved')
 

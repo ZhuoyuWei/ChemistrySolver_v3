@@ -3,6 +3,7 @@ import re
 from domain.chemistry_utils import (ChemicalSubstance,
                                     ChemicalMixture,
                                     ChemicalEquation)
+from domain.math_utils import solve_linear_equations
 
 LEFT_RIGHT_DELIMITERS_LIST=[r'-->', r'->', '==', '=']
 
@@ -46,7 +47,9 @@ def ParseMixture(mixtureText=None,**kwargs):
             matter_text=matches[0][1]
         else:
             print('Parse Mixture Error: {}'.format(mixtureText))
-        matter=ParseSubstance(matter_text)['matter']
+        matter=ParseSubstance(matter_text)
+        #print(tmp_matter)
+        #matter=tmp_matter['matter']
         if matter:
             matters.append({'matter':matter,'count':matter_count})
         else:
@@ -83,8 +86,83 @@ def ParseChemicalEquation(chemicalEquationText=None,**kwargs):
         #print(mixtures)
         if len(mixtures) == 2:
             chemicalEquation=ChemicalEquation(*mixtures)
+            chemicalEquation=BalanceChemicalEquation(chemicalEquation)
         else:
             print('Parse Equation Error: {}'.format(chemicalEquationText))
             chemicalEquation=None
         return {'chemicalEquation': chemicalEquation}
     return {'chemicalEquation': None}
+
+
+def BalanceChemicalEquation(chemicalEquation):
+    print("BEFORE:{}".format(chemicalEquation))
+    left_substances=chemicalEquation.left_substances.substances  #substances=[{"count","matter"}]
+    right_substances=chemicalEquation.right_substances.substances
+
+    lefts=[1]*len(left_substances)
+    rights=[1]*len(right_substances)
+
+
+    #Get all elements
+    element_set=set()
+    substances=left_substances+right_substances
+    for substance in substances:
+        substance=substance["matter"]
+        elements=substance.elements
+        for element in elements:
+            element=element["element"]
+            element_set.add(element)
+
+    # Material conservation, each element has an equation
+    element_list=list(element_set)
+    paras=[[0]*len(substances) for element in element_list]
+    b=[0]*len(element_list)
+    for i,element in enumerate(element_list):
+        for j,substance in enumerate(substances):
+            element_count=0
+            elements=substance["matter"].elements
+            for item in elements:
+                if element == item["element"]:
+                    element_count=item["count"]
+            if j >= len(left_substances):
+                element_count*=-1
+            paras[i][j]=element_count
+
+    print("Will Solve: {}".format(paras))
+    #solving linear equations
+    solved=True
+    try:
+        x=solve_linear_equations(paras,b)
+    except:
+        solved=False
+
+    if solved:
+        #set coefficient
+        for i in range(len(x)):
+            x[i]=int(x[i])
+            if x[i] <= 0:
+                print("Error in Solving Linear Equations")
+                print(paras)
+                print(x)
+                exit(-1)
+        i=0
+        for j in range(len(chemicalEquation.left_substances.substances)):
+            chemicalEquation.left_substances.substances[j]["count"]=x[i]
+            i+=1
+        for j in range(len(chemicalEquation.right_substances.substances)):
+            chemicalEquation.right_substances.substances[j]["count"]=x[i]
+            i+=1
+
+    print("AFTER:{}".format(chemicalEquation))
+    #exit(-1)
+    return chemicalEquation
+
+
+
+
+
+
+
+
+
+

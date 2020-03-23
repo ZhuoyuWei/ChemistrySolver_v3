@@ -1,6 +1,9 @@
 from .chemistry_func import *
 
 CHEMISTRY_FUNC_LIST=[Func_Name2CE,
+               Func_Formula2CE,
+               Func_Equation2CE,
+               Func_BalanceChemicalEquation,
                Func_Mole2Atom,
                Func_CE2MolarMass,
                Func_Mass2Mole,
@@ -42,4 +45,9 @@ CHEMISTRY_FUNC_LIST=[Func_Name2CE,
                Func_KaMolarity2Percent_ionization,
                Func_2Standard_atmospheric_pressure,
                Func_MolalityMolar_mass2Ww,
-               Func_WwMolar_mass2Molality]
+               Func_WwMolar_mass2Molality,
+               Func_MassMass2Mass_percent,
+               Func_MoleMole2Mole_percent,
+               Func_MolarityMolarity2Molarity_percent,
+               Func_Poh2Alkali_concentration,
+               Func_MolarityMolarity2Molarity_percent]

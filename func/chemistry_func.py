@@ -12,7 +12,7 @@ How to solve different
 import math
 from .func_utils import Func
 from domain.chemistry_utils import PU,CE,ChemicalSubstance,AvogadroConstant,R_in_PV_equal_nRT,R_in_PV_equal_nRT_latm,ATM
-from parse.chemistry_parse import ParseSubstance
+from parse.chemistry_parse import ParseSubstance, ParseChemicalEquation, BalanceChemicalEquation
 
 
 #DICT_MolarMassElement={"K":39.0983,"Cl":35.453,"P":30.9738,"O":15.999,"C":12.010,"H":1.007,"N":14.0067,"He":4.002,"F":18.998,"Al":26.981,"Na":22.989,"Mg":24.304,"S":32.059,"Br":79.901}
@@ -84,6 +84,62 @@ class Func_Formula2CE(Func):
         #print('chemistry_substance = {}'.format(chemistry_substance))
         self.outputs[0].out_node=chemistry_substance
         return (chemistry_substance is not None)
+
+class Func_Equation2CE(Func):
+    '''
+    just as an example, CE is a text
+    '''
+
+    name = "Equation2CE"
+    description = "Convert a substance (chemical) formula to its chemical equation/formula (CE/CF)"
+    output_type="Chemistry_Equation"
+    output_unit=None
+    input_sat_maps = [["target", "equation", None]]
+    NAME2CE=None
+
+
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Equation2CE,self).__init__(inputs,outputs)
+
+
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        ce_str=self.parameters[0].out_node
+        chemistry_equation=ParseChemicalEquation(ce_str)
+        self.outputs[0].out_node=chemistry_equation['chemicalEquation']
+        return (chemistry_equation is not None and chemistry_equation['chemicalEquation'] is not None)
+
+
+class Func_BalanceChemicalEquation(Func):
+    '''
+    just as an example, CE is a text
+    '''
+
+    name = "BalanceChemicalEquation"
+    description = "Balance Chemical Equation"
+    output_type="Balanced_Chemistry_Equation"
+    output_unit=None
+    input_sat_maps = [["target", "Chemistry_Equation", None]]
+    NAME2CE=None
+
+
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_BalanceChemicalEquation,self).__init__(inputs,outputs)
+
+
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        chemical_equation=self.parameters[0].out_node
+        balanced_chemical_equation= BalanceChemicalEquation(chemical_equation)
+        self.outputs[0].out_node=balanced_chemical_equation
+        return (balanced_chemical_equation is not None)
+
 
 class Func_Mole2Atom(Func):
 
@@ -883,9 +939,9 @@ Adapt By Hand from 3/20/2020
 
 '''
 fx = Formula()
-fx.OutputName = "massfraction"
+fx.OutputName = "mass_percent"
 fx.InputNames = ["InNodes", "OutNodes", "graph"]
-fx.Function = Formula.MassFractionTwoNodes
+fx.Function = Formula.mass_percentTwoNodes
 rs.append(fx)
 '''
 
@@ -899,6 +955,111 @@ class Func_MassMass2Mass_percent(Func):
 
     def __init__(self,inputs,outputs=None):
         super(Func_MassMass2Mass_percent,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "mole_percent"
+fx.InputNames = ["InNodes", "OutNodes", "graph"]
+fx.Function = Formula.mole_percentTwoNodes
+rs.append(fx)
+'''
+
+class Func_MoleMole2Mole_percent(Func):
+
+    name = "MoleMole2Mole_percent"
+    description = "mole of node_1 / mole of node_2"
+    output_type = "mole_percent"
+    output_unit = None
+    input_sat_maps = [["node_1", "mole","mol"], ["node_2", "mole","mol"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MoleMole2Mole_percent,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'molarity_percent'
+fx.InputNames = ['InNodes', 'OutNodes', 'graph']
+fx.Function = Formula.MolarityFractionTwoNodes
+rs.append(fx)
+'''
+
+class Func_MolarityMolarity2Molarity_percent(Func):
+
+    name = "MolarityMolarity2Molarity_percent"
+    description = "molarity of node_1 / molarity of node_2"
+    output_type = "molarity_percent"
+    output_unit = None
+    input_sat_maps = [["node_1", "molarity","mol/l"], ["node_2", "molarity","mol/l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MolarityMolarity2Molarity_percent,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'alkali concentration'
+fx.InputNames = ['poh']
+fx.Function = lambda dbList: 10 ** (-dbList[0])
+rs.append(fx)
+'''
+
+class Func_Poh2Alkali_concentration(Func):
+
+    name = "Poh2Alkali_concentration"
+    description = "10 ** (-poh)"
+    output_type = "alkali_concentration"
+    output_unit = None
+    input_sat_maps = [["target", "poh", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Poh2Alkali_concentration,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=10 ** self.parameters[0].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "atom mole in molecule"
+fx.InputNames = ["atom", "molecule", "mole"]
+fx.Function = Formula.CalcAtomMole
+rs.append(fx)
+'''
+
+class Func_MolarityMolarity2Molarity_percent(Func):
+
+    name = "MolarityMolarity2Molarity_percent"
+    description = "atom mole in molecule"
+    output_type = "molarity_percent"
+    output_unit = None
+    input_sat_maps = [["node_1", "Chemistry_Substance",None],
+                      ["node_2", "Chemistry_Substance",None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MolarityMolarity2Molarity_percent,self).__init__(inputs,outputs)
 
     def run_func(self):
         if not self.sat_running():

@@ -89,16 +89,40 @@ class PU:
                     break
                 unit_index -= 1
             '''
+            text=text.replace('× 10^','e')
             tokens=text.split()
+            word2digit={"one":1,"two":2,"three":3,"four":4,"five":5,
+                        "six":6,"seven":7,"eight":8,"nine":9,"zero":0,
+                        "each":1}
             try:
-                value = float(tokens[0])
+                value=tokens[0]
+                if value.endswith('.') or value.endswith(',') or value.endswith('?'):
+                    value=value[:-1]
+                if ',' in value:
+                    value=value.replace(',','')
+                if value.endswith('%'):
+                    value=float(value[:-1])*0.01
+                else:
+                    try:
+                        if value.lower() in word2digit:
+                            value=word2digit[value.lower()]
+                        else:
+                            value = float(value)
+                    except:
+                        rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", value)
+                        #print("{}\t{}\t{}".format(text,value,rr))
+                        #
+                        value=float(rr[-1])
                 unit = ' '.join(tokens[1:])
                 if unit.endswith('.') or unit.endswith(',') or unit.endswith('?'):
                     unit=unit[:-1]
                 unit=cls.get_unit_from_mention(unit)
-                print("[[debug in parsing]]: value=[{}], unit=[{}]".format(value,unit))
+                #print("[[debug in parsing]]: value=[{}], unit=[{}]".format(value,unit))
                 return PU(value, unit)
             except:
+                #print(tokens)
+                #import time
+                #time.sleep(1)
                 return None
 
 
@@ -228,6 +252,8 @@ class ChemicalEquation:
         text='='.join(buffer)
         self._text=text
         return text
+    def to_str(self):
+        return self.__str__()
 
     '''
     def search_a_substance_from_equation(self, givenMatter):
