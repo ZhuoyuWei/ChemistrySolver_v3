@@ -1,8 +1,4 @@
-fx = Formula()
-fx.OutputName = "massfraction"
-fx.InputNames = ["InNodes", "OutNodes", "graph"]
-fx.Function = Formula.MassFractionTwoNodes
-rs.append(fx)
+
 
 fx = Formula()
 fx.OutputName = "molefraction"

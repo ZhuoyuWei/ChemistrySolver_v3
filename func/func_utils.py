@@ -1,5 +1,5 @@
 import copy
-from domain.chemistry_utils import PU
+from domain.chemistry_utils import PU, UnitConvertor
 
 class Func:
 
@@ -7,8 +7,7 @@ class Func:
     description = "Basic Function"
     output_type="None" #should be a predicate
 
-    input_sat_maps=[["node_1","mass"],["node_1","molarity"],["node2","mass"],["target","mass"]] #just an example
-
+    input_sat_maps=[["node_1","mass","g"],["node_1","molarity","g"],["node2","mass","g"],["target","mass","g"]] #just an example
 
 
     def __init__(self,inputs,outputs=None):
@@ -54,6 +53,7 @@ class Func:
 
         if fill_count >= len(self.parameters):
             self.input_unsat_map=[]
+            self.all_unit_converting()
             return True
         else:
             tmplist=self.input_unsat_map
@@ -63,6 +63,20 @@ class Func:
                     self.input_unsat_map.append(tmplist[i])
             return False
 
+    def unit_converting(self,old_pu,target_unit):
+        if isinstance(old_pu,PU) and old_pu.value is not None and \
+            old_pu.unit is not None and old_pu.unit != target_unit:
+            target=UnitConvertor.converting(old_pu,target_unit)
+        else:
+            target=old_pu
+        return target
+
+    def all_unit_converting(self):
+
+        for i,parameter in enumerate(self.parameters):
+            print(self.__class__.input_sat_maps[i])
+            self.parameters[i].out_node=self.unit_converting(self.parameters[i].out_node,
+                                                             self.__class__.input_sat_maps[i][2])
 
 
     def run_func(self):

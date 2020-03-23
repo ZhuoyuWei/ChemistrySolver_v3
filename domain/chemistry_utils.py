@@ -4,6 +4,11 @@ This file descripts
 
 import re
 
+AvogadroConstant=6.02214076e23
+R_in_PV_equal_nRT=8.31441
+R_in_PV_equal_nRT_latm=0.0820574587
+ATM=101.325
+
 class PU:
     def __init__(self,value=None,unit=None):
         self.value=value
@@ -85,6 +90,7 @@ class PU:
             try:
                 value = float(tokens[0])
                 unit = ' '.join(tokens[1:])
+                print("[[debug in parsing]]: value=[{}], unit=[{}]".format(value,unit))
                 return PU(value, unit)
             except:
                 return None
@@ -215,4 +221,128 @@ class ChemicalEquation:
         return foundMatterFromEquation
     '''
 
+class UnitConvertor:
+
+    unit_maps=None
+
+    @classmethod
+    def build_unit_maps(cls):
+
+        cls.unit_maps={
+            'g':{'kg':cls.div_1000},
+            'kg':{'g':cls.mul_1000},
+            'j': {'kj': cls.div_1000},
+            'kj': {'j': cls.mul_1000},
+            'm':{'mm':cls.mul_1000,
+                 'cm':cls.mul_100,
+                 'dm': cls.mul_10,
+                 'mol/kg':cls.equal},
+            'mm':{'m':cls.div_1000,
+                 'dm':cls.div_100,
+                 'cm': cls.div_10},
+            'cm': {'m': cls.div_100,
+                   'dm': cls.div_10,
+                   'mm': cls.mul_10},
+            'dm': {'m': cls.div_10,
+                   'cm': cls.mul_10,
+                   'mm': cls.mul_100},
+            'ml':{'l':cls.div_1000,
+                  'm^3': cls.div_1000000},
+            'l':{'ml':cls.mul_1000,
+                 'm^3':cls.div_1000},
+            'm^3': {'l': cls.mul_1000,
+                  'ml': cls.mul_1000000},
+            "k": {"°c":cls.k2c},
+            "°c": {"k":cls.c2k},
+            'g/l': {'kg/l': cls.div_1000,
+                    'g/m^3': cls.mul_1000,
+                    'g/cm^3': cls.div_1000},
+            'kg/l': {'g/l': cls.mul_1000,
+                     'g/m^3': cls.mul_1000000,
+                     'g/cm^3': cls.equal},
+            'g/m^3': {'kg/l': cls.div_1000000,
+                      'g/l': cls.div_1000,
+                      'g/cm^3': cls.div_1000000},
+            'g/cm^3': {'kg/l': cls.equal,
+                      'g/l': cls.mul_1000,
+                      'g/m^3': cls.mul_1000000},
+            'mol/kg': {'m': cls.equal},
+            'pa':{'kpa':cls.div_1000,
+                  'atm':cls.pa2atm},
+            'kpa':{'pa':cls.mul_1000,
+                   'atm':cls.kpa2atm},
+            'atm':{'pa':cls.atm2pa,
+                   'kpa':cls.atm2kpa},
+
+        }
+
+    @classmethod
+    def div_1000000(cls,num):
+        return num/1000000
+
+    @classmethod
+    def div_1000(cls,num):
+        return num/1000
+
+    @classmethod
+    def div_100(cls,num):
+        return num/100
+
+    @classmethod
+    def div_10(cls,num):
+        return num/10
+
+    @classmethod
+    def mul_1000000(cls,num):
+        return num*1000000
+
+    @classmethod
+    def mul_1000(cls,num):
+        return num*1000
+
+    @classmethod
+    def mul_100(cls,num):
+        return num*100
+
+    @classmethod
+    def mul_10(cls,num):
+        return num*10
+
+    @classmethod
+    def k2c(cls,num):
+        return num-273.15
+
+    @classmethod
+    def c2k(cls,num):
+        return num+273.15
+
+    @classmethod
+    def equal(cls,num):
+        return num
+
+    @classmethod
+    def pa2atm(cls,num):
+        return num/1000/ATM
+    @classmethod
+    def kpa2atm(cls,num):
+        return num/ATM
+
+    @classmethod
+    def atm2pa(cls,num):
+        return num*1000*ATM
+    @classmethod
+    def atm2kpa(cls,num):
+        return num*ATM
+
+
+    @classmethod
+    def converting(cls,s_pu,t_unit):
+        if cls.unit_maps is None:
+            cls.build_unit_maps()
+        try:
+            t_pu=PU(value=None,unit=t_unit)
+            t_pu.value=cls.unit_maps[s_pu.unit][t_unit](s_pu.value)
+        except:
+            t_pu=s_pu
+        return t_pu
 
