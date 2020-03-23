@@ -95,7 +95,7 @@ def ParseChemicalEquation(chemicalEquationText=None,**kwargs):
 
 
 def BalanceChemicalEquation(chemicalEquation):
-    print("BEFORE:{}".format(chemicalEquation))
+    print("[BALANCE] BEFORE:{}".format(chemicalEquation))
     left_substances=chemicalEquation.left_substances.substances  #substances=[{"count","matter"}]
     right_substances=chemicalEquation.right_substances.substances
 
@@ -152,8 +152,8 @@ def BalanceChemicalEquation(chemicalEquation):
         for j in range(len(chemicalEquation.right_substances.substances)):
             chemicalEquation.right_substances.substances[j]["count"]=x[i]
             i+=1
-
-    print("AFTER:{}".format(chemicalEquation))
+    print("[BALANCE] x:{}".format(x))
+    print("[BALANCE] AFTER:{}".format(chemicalEquation))
     #exit(-1)
     return chemicalEquation
 
