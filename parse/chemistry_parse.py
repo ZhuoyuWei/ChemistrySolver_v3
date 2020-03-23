@@ -152,7 +152,10 @@ def BalanceChemicalEquation(chemicalEquation):
         for j in range(len(chemicalEquation.right_substances.substances)):
             chemicalEquation.right_substances.substances[j]["count"]=x[i]
             i+=1
-    print("[BALANCE] x:{}".format(x))
+        print("[BALANCE] x:{}".format(x))
+    else:
+        print("[BALANCE] x:unsolved")
+
     print("[BALANCE] AFTER:{}".format(chemicalEquation))
     #exit(-1)
     return chemicalEquation

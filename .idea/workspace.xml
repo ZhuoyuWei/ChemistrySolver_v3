@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="add menton to unit mechanism to parsing PU">
-      <change afterPath="$PROJECT_DIR$/domain/math_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py" afterDir="false" />
+    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="debug solving linear equations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/batch_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/chemistry_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/chemistry_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/adaption/reminder_old.log" beforeDir="false" afterPath="$PROJECT_DIR$/func/adaption/reminder_old.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/chemistry_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/chemistry_func.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parse/chemistry_parse.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/chemistry_parse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse/parse_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/parse_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,22 +42,22 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="log" value="61" />
-          <entry key="py" value="11319" />
+          <entry key="py" value="11354" />
           <entry key="tsv" value="2" />
-          <entry key="txt" value="173" />
+          <entry key="txt" value="237" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="239" />
-          <entry key="Python" value="11319" />
+          <entry key="PLAIN_TEXT" value="303" />
+          <entry key="Python" value="11354" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="438">
@@ -77,14 +69,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="92" column="18" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="34" />
+            <state relative-caret-position="567">
+              <caret line="156" column="36" selection-start-line="156" selection-start-column="36" selection-end-line="156" selection-end-column="36" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1584974966570" expanded="true" signature="3396:3401" ph="..." />
+                <marker date="1584976437764" expanded="true" signature="3406:3411" ph="..." />
               </folding>
             </state>
           </provider>
@@ -158,11 +150,11 @@
         <option value="$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py" />
         <option value="$PROJECT_DIR$/func/__init__.py" />
         <option value="$PROJECT_DIR$/parse/parse_utils.py" />
-        <option value="$PROJECT_DIR$/parse/chemistry_parse.py" />
         <option value="$PROJECT_DIR$/domain/math_utils.py" />
         <option value="$PROJECT_DIR$/domain/chemistry_utils.py" />
         <option value="$PROJECT_DIR$/batch_test.py" />
         <option value="$PROJECT_DIR$/func/chemistry_func.py" />
+        <option value="$PROJECT_DIR$/parse/chemistry_parse.py" />
       </list>
     </option>
   </component>
@@ -448,7 +440,21 @@
       <option name="project" value="LOCAL" />
       <updated>1584964271019</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add balance chemical equation">
+      <created>1584975977442</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1584975977442</updated>
+    </task>
+    <task id="LOCAL-00012" summary="debug solving linear equations">
+      <created>1584976365865</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1584976365865</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -489,7 +495,9 @@
     <MESSAGE value="39 functions update" />
     <MESSAGE value="add unit processing to all implemented functions" />
     <MESSAGE value="add menton to unit mechanism to parsing PU" />
-    <option name="LAST_COMMIT_MESSAGE" value="add menton to unit mechanism to parsing PU" />
+    <MESSAGE value="add balance chemical equation" />
+    <MESSAGE value="debug solving linear equations" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug solving linear equations" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/model/HyperGraph.py" />
@@ -712,23 +720,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="92" column="18" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1584974966570" expanded="true" signature="3396:3401" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
           <caret line="112" column="101" selection-start-line="112" selection-start-column="101" selection-end-line="112" selection-end-column="101" />
           <folding>
             <element signature="e#168#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="156" column="36" selection-start-line="156" selection-start-column="36" selection-end-line="156" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1584976437764" expanded="true" signature="3406:3411" ph="..." />
           </folding>
         </state>
       </provider>
