@@ -1,4 +1,8 @@
 import re
+import sys
+import os
+sys.path.append(os.path.abspath('./'))
+print(sys.path)
 
 from domain.chemistry_utils import (ChemicalSubstance,
                                     ChemicalMixture,
@@ -128,7 +132,7 @@ def BalanceChemicalEquation(chemicalEquation):
                 element_count*=-1
             paras[i][j]=element_count
 
-    print("Will Solve: {}".format(paras))
+    #print("Will Solve: {}".format(paras))
     #solving linear equations
     solved=True
     try:
@@ -139,10 +143,15 @@ def BalanceChemicalEquation(chemicalEquation):
     if solved:
         i=0
         for j in range(len(chemicalEquation.left_substances.substances)):
+            #print(type(chemicalEquation.left_substances.substances[j]["count"]))
             chemicalEquation.left_substances.substances[j]["count"]=x[i]
+
             i+=1
         for j in range(len(chemicalEquation.right_substances.substances)):
+            #print(chemicalEquation.right_substances.substances[j]["count"])
             chemicalEquation.right_substances.substances[j]["count"]=x[i]
+            #print(chemicalEquation.right_substances.substances[j]["count"])
+
             i+=1
         print("[BALANCE] x:{}".format(x))
     else:
@@ -161,5 +170,6 @@ def BalanceChemicalEquation(chemicalEquation):
 
 #unit test
 if __name__ == '__main__':
+
     ce_str="Na + H2O = NaOH + H2"
     ce=ParseChemicalEquation(ce_str)

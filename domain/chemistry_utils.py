@@ -113,9 +113,10 @@ class PU:
                         #print("{}\t{}\t{}".format(text,value,rr))
                         #
                         value=float(rr[-1])
-                unit = ' '.join(tokens[1:])
+                unit = ' '.join(tokens[1:]).lower()
                 if unit.endswith('.') or unit.endswith(',') or unit.endswith('?'):
                     unit=unit[:-1]
+
                 unit=cls.get_unit_from_mention(unit)
                 #print("[[debug in parsing]]: value=[{}], unit=[{}]".format(value,unit))
                 return PU(value, unit)
@@ -145,6 +146,7 @@ class PU:
         elif mention.lower() in cls.mention2unit:
             return cls.mention2unit[mention.lower()]
         else:
+            print('[Unit Unsolved] {}'.format(mention))
             return mention
 
 
@@ -163,8 +165,8 @@ class ChemicalSubstance:
         self._text=None
 
     def __str__(self):
-        if self._text:
-            return self._text
+        #if self._text:
+        #    return self._text
         text=''
         if self.elements:
             buffer = []
@@ -216,12 +218,13 @@ class ChemicalMixture:
         self._text=None
 
     def __str__(self):
-        if self._text:
-            return self._text
+        #if self._text:
+        #    return self._text
         text=''
         if self.substances:
             buffer=[]
             for substance in self.substances:
+                #print('Debug in ChemicalMixture: {} '.format('{}{}'.format(substance['count'],str(substance['matter']))))
                 if substance['count']==1:
                     substance_str=str(substance['matter'])
                 else:
@@ -246,8 +249,8 @@ class ChemicalEquation:
         self._text=None
 
     def __str__(self):
-        if self._text:
-            return self._text
+        #if self._text:
+        #    return self._text
         buffer=[str(self.left_substances),str(self.right_substances)]
         text='='.join(buffer)
         self._text=text
