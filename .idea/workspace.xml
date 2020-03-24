@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="debug solving linear equations">
+    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="implement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse/chemistry_parse.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/chemistry_parse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/math_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/math_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,19 +15,19 @@
     <session id="-578715192">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="9" />
+          <entry key="project.open.time.1" value="10" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bak" value="2" />
           <entry key="log" value="2" />
-          <entry key="py" value="80" />
+          <entry key="py" value="81" />
           <entry key="tsv" value="4" />
           <entry key="vocabs" value="2" />
         </counts>
@@ -35,22 +35,22 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="10" />
-          <entry key="Python" value="80" />
+          <entry key="Python" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
           <entry key="log" value="61" />
-          <entry key="py" value="11354" />
+          <entry key="py" value="11833" />
           <entry key="tsv" value="2" />
-          <entry key="txt" value="237" />
+          <entry key="txt" value="251" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="303" />
-          <entry key="Python" value="11354" />
+          <entry key="PLAIN_TEXT" value="317" />
+          <entry key="Python" value="11833" />
         </counts>
       </usages-collector>
     </session>
@@ -60,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
+            <state relative-caret-position="2289">
               <caret line="112" column="101" selection-start-line="112" selection-start-column="101" selection-end-line="112" selection-end-column="101" />
               <folding>
                 <element signature="e#168#179#0" expanded="true" />
@@ -69,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parse/chemistry_parse.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="567">
@@ -77,6 +77,19 @@
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <marker date="1584976437764" expanded="true" signature="3406:3411" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+              <folding>
+                <marker date="1585010758647" expanded="true" signature="57:62" ph="..." />
+                <marker date="1585010758647" expanded="true" signature="226:554" ph="..." />
               </folding>
             </state>
           </provider>
@@ -150,11 +163,11 @@
         <option value="$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py" />
         <option value="$PROJECT_DIR$/func/__init__.py" />
         <option value="$PROJECT_DIR$/parse/parse_utils.py" />
-        <option value="$PROJECT_DIR$/domain/math_utils.py" />
         <option value="$PROJECT_DIR$/domain/chemistry_utils.py" />
         <option value="$PROJECT_DIR$/batch_test.py" />
         <option value="$PROJECT_DIR$/func/chemistry_func.py" />
         <option value="$PROJECT_DIR$/parse/chemistry_parse.py" />
+        <option value="$PROJECT_DIR$/domain/math_utils.py" />
       </list>
     </option>
   </component>
@@ -236,7 +249,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.collect_function_names_from_chemistry_func">
+  <component name="RunManager" selected="Python.math_utils">
     <configuration name="collect_function_names_from_chemistry_func" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ChemistrySolver_v3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -258,27 +271,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dfs_solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ChemistrySolver_v3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/solving" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/solving/dfs_solver.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="func_convert_tool" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ChemistrySolver_v3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -292,6 +284,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Projects\Chemistry\solver_v3\ChemistrySolver_v3\func\adaption\func_convert_tool.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="math_utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ChemistrySolver_v3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/domain" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/domain/math_utils.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -344,18 +357,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.simple_test" />
-      <item itemvalue="Python.dfs_solver" />
       <item itemvalue="Python.func_convert_tool" />
       <item itemvalue="Python.tt (1)" />
       <item itemvalue="Python.collect_function_names_from_chemistry_func" />
+      <item itemvalue="Python.math_utils" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.math_utils" />
         <item itemvalue="Python.collect_function_names_from_chemistry_func" />
         <item itemvalue="Python.simple_test" />
         <item itemvalue="Python.tt (1)" />
         <item itemvalue="Python.func_convert_tool" />
-        <item itemvalue="Python.dfs_solver" />
       </list>
     </recent_temporary>
   </component>
@@ -454,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584976365865</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="debug solving linear equations 2">
+      <created>1584976451853</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1584976451853</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -466,7 +486,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.19298245" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32819906" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32819906" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3992891" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -497,7 +517,19 @@
     <MESSAGE value="add menton to unit mechanism to parsing PU" />
     <MESSAGE value="add balance chemical equation" />
     <MESSAGE value="debug solving linear equations" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug solving linear equations" />
+    <MESSAGE value="debug solving linear equations 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug solving linear equations 2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/domain/math_utils.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/model/HyperGraph.py" />
@@ -518,15 +550,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="107" selection-start-line="42" selection-start-column="107" selection-end-line="42" selection-end-column="107" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="107" selection-start-line="42" selection-start-column="107" selection-end-line="42" selection-end-column="107" />
         </state>
       </provider>
     </entry>
@@ -651,10 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1584955051657" expanded="true" signature="2876:3178" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -679,27 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <marker date="1584975391838" expanded="true" signature="53:58" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
           <caret line="255" column="29" selection-start-line="255" selection-start-column="29" selection-end-line="255" selection-end-column="29" />
-          <folding>
-            <element signature="e#161#4891#0" />
-            <element signature="e#5036#6791#0" />
-            <element signature="e#6822#7664#0" />
-            <element signature="e#8893#12047#0" />
-            <marker date="1584975663353" expanded="true" signature="8110:8146" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -707,9 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
-          <folding>
-            <element signature="e#80#91#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -722,7 +730,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/func/chemistry_func.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
+        <state relative-caret-position="2289">
           <caret line="112" column="101" selection-start-line="112" selection-start-column="101" selection-end-line="112" selection-end-column="101" />
           <folding>
             <element signature="e#168#179#0" expanded="true" />
@@ -737,6 +745,17 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <marker date="1584976437764" expanded="true" signature="3406:3411" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <marker date="1585010758647" expanded="true" signature="57:62" ph="..." />
+            <marker date="1585010758647" expanded="true" signature="226:554" ph="..." />
           </folding>
         </state>
       </provider>
