@@ -137,14 +137,6 @@ def BalanceChemicalEquation(chemicalEquation):
         solved=False
 
     if solved:
-        #set coefficient
-        for i in range(len(x)):
-            x[i]=int(x[i])
-            if x[i] <= 0:
-                print("Error in Solving Linear Equations")
-                print(paras)
-                print(x)
-                exit(-1)
         i=0
         for j in range(len(chemicalEquation.left_substances.substances)):
             chemicalEquation.left_substances.substances[j]["count"]=x[i]
@@ -167,5 +159,7 @@ def BalanceChemicalEquation(chemicalEquation):
 
 
 
-
-
+#unit test
+if __name__ == '__main__':
+    ce_str="Na + H2O = NaOH + H2"
+    ce=ParseChemicalEquation(ce_str)
