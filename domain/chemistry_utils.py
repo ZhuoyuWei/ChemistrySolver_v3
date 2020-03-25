@@ -167,8 +167,19 @@ class PU:
             return text
 
         def convert_mul_10_pow(text):
+            if '−' in text:
+                text=text.replace('−','-')
             if '×10^' in text:
                 text = text.replace('×10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif ' × 10^' in text:
+                text = text.replace(' × 10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif '× 10^' in text:
+                text = text.replace('× 10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif ' ×10^' in text:
+                text = text.replace(' ×10^', 'e')
                 text = text.replace('(','').replace(')','')
             return text
 
@@ -183,7 +194,7 @@ class PU:
         def standard_float_processed(text):
             text=remove_end_symbol(text)
             text=remove_comma(text)
-            text=convert_mul_10_pow(text)
+            #text=convert_mul_10_pow(text)
             return text
 
         def extract_a_float_from_text(text):
@@ -210,6 +221,7 @@ class PU:
                     print("[{}]\t[{}]".format(text,ori))
             return pu
 
+        text = convert_mul_10_pow(text)
         tokens=text.split(' ')
         pu=None
         if len(tokens) == 1:
@@ -237,6 +249,8 @@ class PU:
         if pu is not None and pu.unit == "%":
             pu.value/=100
             pu.unit=None
+        if pu is not None and pu.unit is not None:
+            pu.unit=cls.get_unit_from_mention(pu.unit)
 
         return pu
 
