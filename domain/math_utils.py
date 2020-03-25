@@ -11,7 +11,7 @@ def solve_linear_equations(a,b):
 '''
 
 def solve_linear_equations_dfs(a,b,x,depth):
-    for value in range(1,11):
+    for value in range(1,16):
         x[depth] = value
 
         if depth == len(x)-1:

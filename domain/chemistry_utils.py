@@ -142,23 +142,6 @@ class PU:
             if text.endswith('.') or text.endswith(',') or text.endswith('?'):
                 text=text[:-1]
 
-            '''
-            if text.endswith('%'):
-                print(text)
-                text=text[:-1]
-                dot_index=text.find('.')
-                if dot_index == 0:
-                    text="0.00"+text[dot_index+1:]
-                elif dot_index == 1:
-                    text="0.0"+text[:dot_index]+text[dot_index+1:]
-                elif dot_index == 2:
-                    text = "0." + text[dot_index-2:dot_index] + text[dot_index + 1:]
-                elif dot_index > 2:
-                    text = text[:dot_index-2]+ "." + text[dot_index-2:dot_index] + text[dot_index + 1:]
-                else:
-                    text="0.0"+text
-                print(text)
-            '''
 
             return text
 
@@ -265,12 +248,28 @@ class PU:
 
     @classmethod
     def get_unit_from_mention(cls,mention):
+
+        def simple_process_mention(text):
+
+            def remove_end_symbol(text):
+                if text.endswith('.') or text.endswith(',') or text.endswith('?'):
+                    text = text[:-1]
+                return text
+
+            text=remove_end_symbol(text)
+            return text
+
         if cls.mention2unit is None:
             cls.read_mention2unit_from_tsv()
+        mention=simple_process_mention(mention)
         if mention in cls.mention2unit:
             return cls.mention2unit[mention]
         elif mention.lower() in cls.mention2unit:
             return cls.mention2unit[mention.lower()]
+        elif mention.replace(' ','_').lower() in cls.mention2unit:
+            return cls.mention2unit[mention.replace(' ','_').lower()]
+        elif mention.replace(' ','')in cls.mention2unit:
+            return cls.mention2unit[mention.replace(' ','')]
         else:
             print('[Unit Unsolved] {}'.format(mention))
             return mention
@@ -457,7 +456,16 @@ class UnitConvertor:
             'atm':{'pa':cls.atm2pa,
                    'kpa':cls.atm2kpa},
             'fluid_ounces':{'oz':cls.fl_oz2oz},
-            'oz':{'fluid_ounces':cls.oz2fl_oz}
+            'oz':{'fluid_ounces':cls.oz2fl_oz},
+            'mol/l': {'mol/ml': cls.div_1000,
+                      'mmol/l': cls.mul_1000,
+                      'mmol/ml':cls.equal},
+            'mol/ml': {'mol/l': cls.mul_1000,
+                       'mmol/ml':cls.mul_1000,
+                       'mmol/l':cls.mul_1000000},
+            'mmol':{'mol':cls.div_1000},
+            'mol':{'mmol':cls.mul_1000}
+
 
         }
 

@@ -13,6 +13,8 @@ answer_list=[]
 predict_list=[]
 
 
+question_list=[]
+
 with codecs.open(sys.argv[1],'r','utf-8') as f:
     for line in f:
         ss = line.strip().split('\t')
@@ -20,10 +22,12 @@ with codecs.open(sys.argv[1],'r','utf-8') as f:
         answer_list.append(answer)
         predict = ss[6]
         predict_list.append(predict)
+        question=ss[1]
+        question_list.append(question)
 
 
 
-def cal_correct(answer,predict,fdebug):
+def cal_correct(answer,predict,question,fdebug):
     if predict is None or predict == "None":
         return False
     tmp_answer=answer.replace(' ','').lower().strip()
@@ -35,7 +39,7 @@ def cal_correct(answer,predict,fdebug):
     answer_PU = PU.parse_pu_from_text(answer)
     predict_PU = PU.parse_pu_from_text(predict)
     if answer_PU is not None and predict_PU is not None:
-        if math.fabs(answer_PU.value - predict_PU.value) < math.fabs(answer_PU.value) * 0.05:
+        if math.fabs(answer_PU.value - predict_PU.value) < math.fabs(answer_PU.value) * 0.1:
             return True
 
     answer=answer.split(' ')
@@ -71,14 +75,14 @@ def cal_correct(answer,predict,fdebug):
             unit_index-=1
         #if predict_unit == answer_unit and math.fabs(answer_value-predict_value)<math.fabs(answer_value)*0.05:
         #    return True
-        if flag and math.fabs(answer_value - predict_value) < math.fabs(answer_value) * 0.05:
+        if flag and math.fabs(answer_value - predict_value) < math.fabs(answer_value) * 0.1:
             return True
         else:
             flag=False
     if flag is False:
         print('answer:{}\tpredict:{}'.format(answer,predict))
         #fdebug.write('{}\t{}\n'.format(tmp_answer,tmp_predict))
-        fdebug.write('answer:{}\tpredict:{}\n'.format(answer, predict))
+        fdebug.write('{}\tanswer:{}\tpredict:{}\n'.format(question,answer, predict))
 
     return False
 
@@ -89,7 +93,7 @@ total_count=0
 with open(sys.argv[2],'w',encoding='utf-8') as fdebug:
     for i in range(len(answer_list)):
         total_count+=1
-        flag=cal_correct(answer_list[i],predict_list[i],fdebug)
+        flag=cal_correct(answer_list[i],predict_list[i],question_list[i],fdebug)
         if flag:
             correct_count+=1
 print('precision = {}'.format(correct_count/total_count))
