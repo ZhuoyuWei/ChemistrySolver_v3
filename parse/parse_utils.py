@@ -42,7 +42,8 @@ def generate_edges_from_conditions(conditions):
             #physical_unit_pattern=re.compile(r"([\w ]+) \[OF\] ([\w ]+) \[=\](.*)")
             #physical_unit_match=physical_unit_pattern.search(condition['value'])
             #if physical_unit_match:
-            parsed_PU=PU.parse_from_text(condition['value']['value'])
+            #parsed_PU=PU.parse_from_text(condition['value']['value'])
+            parsed_PU = PU.parse_pu_from_text(condition['value']['value'])
             if parsed_PU:
                     edge=Edge.generate_edge_from_triplet([condition['value']['subject'],
                                                           condition['value']['predicate'],
@@ -50,6 +51,7 @@ def generate_edges_from_conditions(conditions):
 
             else:
                 print('debug by zhuoyu, cannot parsed condition = {}'.format(condition))
+                print('PU parsed Fail: {}'.format(condition['value']['value']))
 
         elif condition['type'] == 'chemical formula' \
                 or condition['type'] == 'chemical equation':

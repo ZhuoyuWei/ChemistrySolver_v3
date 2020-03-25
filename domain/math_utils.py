@@ -33,6 +33,13 @@ def solve_linear_equations(a,b):
         x = np.ones(len(a[0]), dtype=int)
     return x.tolist()
 
+def is_float(s):
+    try:
+        float(s)  # for int, long and float
+    except ValueError:
+        return False
+    return True
+
 
 #unit test
 if __name__ == '__main__':

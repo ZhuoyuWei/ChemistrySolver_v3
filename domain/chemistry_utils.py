@@ -4,6 +4,11 @@ This file descripts
 
 import re
 
+import sys
+sys.path.append('../')
+
+from domain.math_utils import is_float
+
 AvogadroConstant=6.02214076e23
 R_in_PV_equal_nRT=8.31441
 R_in_PV_equal_nRT_latm=0.0820574587
@@ -128,6 +133,113 @@ class PU:
 
 
         return None
+
+    @classmethod
+    def parse_pu_from_text(cls,text):
+
+        def remove_end_symbol(text):
+
+            if text.endswith('.') or text.endswith(',') or text.endswith('?'):
+                text=text[:-1]
+
+            '''
+            if text.endswith('%'):
+                print(text)
+                text=text[:-1]
+                dot_index=text.find('.')
+                if dot_index == 0:
+                    text="0.00"+text[dot_index+1:]
+                elif dot_index == 1:
+                    text="0.0"+text[:dot_index]+text[dot_index+1:]
+                elif dot_index == 2:
+                    text = "0." + text[dot_index-2:dot_index] + text[dot_index + 1:]
+                elif dot_index > 2:
+                    text = text[:dot_index-2]+ "." + text[dot_index-2:dot_index] + text[dot_index + 1:]
+                else:
+                    text="0.0"+text
+                print(text)
+            '''
+
+            return text
+
+        def remove_comma(text):
+            text=text.replace(',','')
+            return text
+
+        def convert_mul_10_pow(text):
+            if '×10^' in text:
+                text = text.replace('×10^', 'e')
+                text = text.replace('(','').replace(')','')
+            return text
+
+        def map_word_to_number(text):
+            word2digit = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+                          "six": 6, "seven": 7, "eight": 8, "nine": 9, "zero": 0,
+                          "each": 1, "ten":10, "per":1, "a":1}
+            if text.lower() in word2digit:
+                return word2digit[text.lower()]
+            return None
+
+        def standard_float_processed(text):
+            text=remove_end_symbol(text)
+            text=remove_comma(text)
+            text=convert_mul_10_pow(text)
+            return text
+
+        def extract_a_float_from_text(text):
+            rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", text)
+            if len(rr) >= 1:
+                num_str=rr[0]
+                unit=text.split(num_str)[-1]
+                return num_str,unit
+            else:
+                return None,text
+
+        def process_one_token(text,ori):
+            text = standard_float_processed(text)
+            pu = None
+            if is_float(text):
+                pu = PU(value=float(text), unit=None)
+            else:  # 5.32M
+                num_str, unit = extract_a_float_from_text(text)
+                if num_str is not None:
+                    pu = PU(value=float(num_str), unit=unit)
+                elif map_word_to_number(text):
+                    pu = PU(value=map_word_to_number(text), unit=None)
+                else:
+                    print("[{}]\t[{}]".format(text,ori))
+            return pu
+
+        tokens=text.split(' ')
+        pu=None
+        if len(tokens) == 1:
+            pu=process_one_token(tokens[0],text)
+        elif len(tokens) == 2:
+            pu = process_one_token(tokens[0],text)
+            if pu is not None:
+                if pu.unit is None:
+                    pu.unit = tokens[1]
+                else:
+                    pu.unit = ' '.join([pu.unit,tokens[1]])
+        else:
+            for l in range(1,len(tokens)):
+                num_str=''.join(tokens[:l])
+                unit_str=' '.join(tokens[l:])
+                pu = process_one_token(num_str,text)
+                if pu is not None and unit_str!="":
+                    if pu.unit is None:
+                        pu.unit = unit_str
+                    else:
+                        pu.unit = ' '.join([pu.unit, unit_str])
+                if pu is not None:
+                    break
+
+        if pu is not None and pu.unit == "%":
+            pu.value/=100
+            pu.unit=None
+
+        return pu
+
     @classmethod
     def read_mention2unit_from_tsv(cls):
         cls.mention2unit={}
@@ -325,9 +437,13 @@ class UnitConvertor:
             'pa':{'kpa':cls.div_1000,
                   'atm':cls.pa2atm},
             'kpa':{'pa':cls.mul_1000,
-                   'atm':cls.kpa2atm},
+                   'atm':cls.kpa2atm,
+                   'psi':cls.kpa2psi},
+            'psi':{'kpa':cls.psi2kpa},
             'atm':{'pa':cls.atm2pa,
                    'kpa':cls.atm2kpa},
+            'fluid_ounces':{'oz':cls.fl_oz2oz},
+            'oz':{'fluid_ounces':cls.oz2fl_oz}
 
         }
 
@@ -389,6 +505,22 @@ class UnitConvertor:
     def atm2kpa(cls,num):
         return num*ATM
 
+    @classmethod
+    def fl_oz2oz(cls,num):
+        return num*1.043175557
+
+    @classmethod
+    def oz2fl_oz(cls,num):
+        return num/1.043175557
+
+    @classmethod
+    def psi2kpa(cls,num):
+        return num*6.894757
+
+    @classmethod
+    def kpa2psi(cls,num):
+        return num/6.894757
+
 
     @classmethod
     def converting(cls,s_pu,t_unit):
@@ -401,3 +533,14 @@ class UnitConvertor:
             t_pu=s_pu
         return t_pu
 
+#unit test
+if __name__ == '__main__':
+    with open(r'C:\Projects\Chemistry\work_3_24\processing_units\value_list.tsv','r',encoding='utf-8') as f:
+        with open(r'C:\Projects\Chemistry\work_3_24\processing_units\value_list.debug','w',encoding='utf-8') as fout:
+            for line in f:
+                value_text=line.strip()
+                value=PU.parse_pu_from_text(value_text)
+                if value is not None:
+                    fout.write('{}\t{}\t{}'.format(value_text,value.value,value.unit)+'\n')
+                else:
+                    fout.write('{}\t{}\t{}'.format(value_text, None, None) + '\n')
