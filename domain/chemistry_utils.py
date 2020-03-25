@@ -3,9 +3,10 @@ This file descripts
 '''
 
 import re
-
+import os
 import sys
 sys.path.append('../')
+sys.path.append('./')
 
 from domain.math_utils import is_float
 
@@ -135,7 +136,7 @@ class PU:
         return None
 
     @classmethod
-    def parse_pu_from_text(cls,text):
+    def parse_pu_from_text(cls,text,fdebug=None):
 
         def remove_end_symbol(text):
 
@@ -152,6 +153,7 @@ class PU:
         def convert_mul_10_pow(text):
             if '−' in text:
                 text=text.replace('−','-')
+
             if '×10^' in text:
                 text = text.replace('×10^', 'e')
                 text = text.replace('(','').replace(')','')
@@ -164,6 +166,38 @@ class PU:
             elif ' ×10^' in text:
                 text = text.replace(' ×10^', 'e')
                 text = text.replace('(','').replace(')','')
+
+            if 'x10^' in text:
+                text = text.replace('x10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif ' x 10^' in text:
+                text = text.replace(' x 10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif 'x 10^' in text:
+                text = text.replace('x 10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif ' x10^' in text:
+                text = text.replace(' x10^', 'e')
+                text = text.replace('(','').replace(')','')
+
+            if '⋅10^' in text:
+                text = text.replace('⋅10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif ' ⋅ 10^' in text:
+                text = text.replace(' ⋅ 10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif '⋅ 10^' in text:
+                text = text.replace('⋅ 10^', 'e')
+                text = text.replace('(','').replace(')','')
+            elif ' ⋅10^' in text:
+                text = text.replace(' ⋅10^', 'e')
+                text = text.replace('(','').replace(')','')
+
+            if '10^' in text:
+                text = text.replace('10^', 'e')
+                text = text.replace('(','').replace(')','')
+
+
             return text
 
         def map_word_to_number(text):
@@ -233,21 +267,28 @@ class PU:
             pu.value/=100
             pu.unit=None
         if pu is not None and pu.unit is not None:
-            pu.unit=cls.get_unit_from_mention(pu.unit)
+            pu.unit=cls.get_unit_from_mention(pu.unit,fdebug)
 
         return pu
 
     @classmethod
     def read_mention2unit_from_tsv(cls):
         cls.mention2unit={}
-        with open('domain/resources/units.tsv','r',encoding='utf-8') as f:
-            for line in f:
-                ss=line.strip().split('\t')
-                if len(ss) == 2:
-                    cls.mention2unit[ss[0]]=ss[1].replace(' ','_')
+        if os.path.exists('domain/resources/units.tsv'):
+            with open('domain/resources/units.tsv','r',encoding='utf-8') as f:
+                for line in f:
+                    ss=line.strip().split('\t')
+                    if len(ss) == 2:
+                        cls.mention2unit[ss[0]]=ss[1].replace(' ','_')
+        if os.path.exists('domain/resources/units_added.tsv'):
+            with open('domain/resources/units_added.tsv','r',encoding='utf-8') as f:
+                for line in f:
+                    ss=line.strip().split('\t')
+                    if len(ss) == 2:
+                        cls.mention2unit[ss[0]]=ss[1].replace(' ','_')
 
     @classmethod
-    def get_unit_from_mention(cls,mention):
+    def get_unit_from_mention(cls,mention,fdebug=None):
 
         def simple_process_mention(text):
 
@@ -272,6 +313,8 @@ class PU:
             return cls.mention2unit[mention.replace(' ','')]
         else:
             print('[Unit Unsolved] {}'.format(mention))
+            if fdebug is not None:
+                fdebug.write(mention+'\n')
             return mention
 
 
@@ -559,10 +602,12 @@ class UnitConvertor:
 if __name__ == '__main__':
     with open(r'C:\Projects\Chemistry\work_3_24\processing_units\value_list.tsv','r',encoding='utf-8') as f:
         with open(r'C:\Projects\Chemistry\work_3_24\processing_units\value_list.debug','w',encoding='utf-8') as fout:
-            for line in f:
-                value_text=line.strip()
-                value=PU.parse_pu_from_text(value_text)
-                if value is not None:
-                    fout.write('{}\t{}\t{}'.format(value_text,value.value,value.unit)+'\n')
-                else:
-                    fout.write('{}\t{}\t{}'.format(value_text, None, None) + '\n')
+            with open(r'C:\Projects\Chemistry\work_3_24\processing_units\unit.mapping.debug', 'w',
+                      encoding='utf-8') as fdebug:
+                for line in f:
+                    value_text = line.strip()
+                    value = PU.parse_pu_from_text(value_text, fdebug)
+                    if value is not None:
+                        fout.write('{}\t{}\t{}'.format(value_text, value.value, value.unit) + '\n')
+                    else:
+                        fout.write('{}\t{}\t{}'.format(value_text, None, None) + '\n')
