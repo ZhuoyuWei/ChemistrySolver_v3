@@ -147,7 +147,7 @@ class Func_Mole2Atom(Func):
     description = "Calculate the number of Atom from the Mole"
     output_type="atom"
     output_unit=None
-    input_sat_maps = [["target", "mole", "mole"]]
+    input_sat_maps = [["target", "mole", "mol"]]
 
     def __init__(self,inputs,outputs=None):
         super(Func_Mole2Atom,self).__init__()
@@ -160,7 +160,6 @@ class Func_Mole2Atom(Func):
         value=self.parameters[0].out_node.value*AvogadroConstant
         self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
         return True
-
 
 
 class Func_CE2MolarMass(Func):
@@ -1049,21 +1048,657 @@ fx.Function = Formula.CalcAtomMole
 rs.append(fx)
 '''
 
-class Func_MolarityMolarity2Molarity_percent(Func):
+class Func_AtomMoleculeMole2Mole(Func):
 
-    name = "MolarityMolarity2Molarity_percent"
+    name = "AtomMoleculeMole2Mole"
     description = "atom mole in molecule"
-    output_type = "molarity_percent"
-    output_unit = None
-    input_sat_maps = [["node_1", "Chemistry_Substance",None],
-                      ["node_2", "Chemistry_Substance",None]]
+    output_type = "mole"
+    output_unit = "mol"
+    input_sat_maps = [["atom", "Chemistry_Substance",None],
+                      ["molecule", "Chemistry_Substance",None],
+                      ["target","mole","mol"]]
 
     def __init__(self,inputs,outputs=None):
-        super(Func_MolarityMolarity2Molarity_percent,self).__init__(inputs,outputs)
+        super(Func_AtomMoleculeMole2Mole,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        atom=self.parameters[0].out_node
+        molecule = self.parameters[1].out_node
+        if len(atom.elements) <= 0 or len(molecule.elements) <= 0:
+            return False
+        atom_ele=atom.elements[0]['element']
+        count=1
+        for i,element in enumerate(molecule.elements):
+            if element['element'] == atom_ele:
+                count=element['count']
+        value=self.parameters[0].out_node.value * count
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "heat_energy"
+fx.InputNames = ["mass", "specific_heat_capacity", "temperature"]
+fx.Function = lambda dbList: dbList[0] * dbList[1] * dbList[2]
+rs.append(fx)
+'''
+class Func_MassSpecific_heat_capacityTemperature2Heat_energy(Func):
+
+    name = "MassSpecific_heat_capacityTemperature2Heat_energy"
+    description = "mass * specific_heat_capacity *temperature"
+    output_type = "heat_energy"
+    output_unit = "j"
+    input_sat_maps = [["target", "mass","kg"], ["target", "specific_heat_capacity","j/(kg_·_°c)"],
+                      ["target","temperature","°c"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MassSpecific_heat_capacityTemperature2Heat_energy,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value * self.parameters[1].out_node.value *\
+              self.parameters[2].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "mass"
+fx.InputNames = ["heat_energy", "specific_heat_capacity", "temperature"]
+fx.Function = energy= mass*shc*t
+rs.append(fx)
+'''
+class Func_Heat_energySpecific_heat_capacityTemperature2Mass(Func):
+
+    name = "Heat_energySpecific_heat_capacityTemperature2Mass"
+    description = "mass = heat_energy/specific_heat_capacity *temperature"
+    output_type = "mass"
+    output_unit = "kg"
+    input_sat_maps = [["target", "heat_energy","j"], ["target", "specific_heat_capacity","j/(kg_·_°c)"],
+                      ["target","temperature","°c"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Heat_energySpecific_heat_capacityTemperature2Mass,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / (self.parameters[1].out_node.value *
+                                                   self.parameters[2].out_node.value)
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "mass"
+fx.InputNames = ["heat_energy", "specific_heat_capacity", "temperature"]
+fx.Function = energy= mass*shc*t
+rs.append(fx)
+'''
+class Func_Heat_energyTemperatureMass2Specific_heat_capacity(Func):
+
+    name = "Heat_energyTemperatureMass2Specific_heat_capacity"
+    description = "specific_heat_capacity = heat_energy/mass*temperature"
+    output_type = "specific_heat_capacity"
+    output_unit = "j/(kg_·_°c)"
+    input_sat_maps = [["target", "heat_energy","j"],
+                      ["target","temperature","°c"], ["target", "mass","kg"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Heat_energyTemperatureMass2Specific_heat_capacity,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / (self.parameters[1].out_node.value *
+                                                   self.parameters[2].out_node.value)
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "temperature"
+fx.InputNames = ["heat_energy", "specific_heat_capacity", "mass"]
+fx.Function = energy= mass*shc*t
+rs.append(fx)
+'''
+class Func_Heat_energySpecific_heat_capacityMass2Temperature(Func):
+
+    name = "Heat_energySpecific_heat_capacityMass2Temperature"
+    description = "temperature = heat_energy/mass*specific_heat_capacity"
+    output_type = "temperature"
+    output_unit = "°c"
+    input_sat_maps = [["target", "heat_energy","j"],
+                      ["target","specific_heat_capacity","j/(kg_·_°c)"], ["target", "mass","kg"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Heat_energySpecific_heat_capacityMass2Temperature,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / (self.parameters[1].out_node.value *
+                                                   self.parameters[2].out_node.value)
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "mass_concentration"
+fx.InputNames = ["mass", "volume"]
+fx.Function = lambda dbList: dbList[0] / dbList[1]
+rs.append(fx)
+'''
+class Func_MassVolume2Mass_concentration(Func):
+
+    name = "MassVolume2Mass_concentration"
+    description = "mass_concentration = mass/volume"
+    output_type = "mass_concentration"
+    output_unit = "g/l"
+    input_sat_maps = [["target", "mass","g"],
+                      ["target","volume","l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MassVolume2Mass_concentration,self).__init__(inputs,outputs)
 
     def run_func(self):
         if not self.sat_running():
             return False
         value=self.parameters[0].out_node.value / self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+class Func_MassVolume2Density(Func):
+
+    name = "MassVolume2Density"
+    description = "density = mass/volume"
+    output_type = "density"
+    output_unit = "g/l"
+    input_sat_maps = [["target", "mass","g"],
+                      ["target","volume","l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MassVolume2Density,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "boiling_point_temperature"
+fx.InputNames = ["boiling_point_temperature", "hvap", "vapor_pressure1", "vapor_pressure2"]
+fx.Function = lambda dbList: 1.0 / (1.0 / dbList[0] - 8.314 / dbList[1] * math.log(dbList[3] / dbList[2]))
+rs.append(fx)
+'''
+class Func_BptHvapPressurePressure2Bpt(Func):
+
+    name = "BptHvapPressurePressure2Bpt"
+    description = "1.0 / (1.0 / [0](boiling_point_temperature2) - " \
+                  "8.314 / [1](hvap) * math.log([2]vapor_pressure2 / [3]vapor_pressure1)"
+    output_type = "boiling_point_temperature"
+    output_unit = "k"
+    input_sat_maps = [["node_1", "boiling_point_temperature","k"],
+                      ["node_1","hvap",None], ["node_1", "vapor_pressure","pa"],
+                      ["target", "vapor_pressure","pa"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_BptHvapPressurePressure2Bpt,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+
+        value =1.0 / (1.0 / self.parameters[0].out_node.value - 8.314 /self.parameters[1].out_node.value
+               * math.log(self.parameters[2].out_node.value/ self.parameters[3].out_node.value))
+
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "ka"
+fx.InputNames = ["molarity_h", "molarity_a", "molarity_ha"]
+fx.Function = lambda dbList: dbList[0] * dbList[1] / dbList[2]
+rs.append(fx)
+'''
+
+class Func_Molarity3_2Ka(Func):
+
+    name = "Molarity3_2Ka"
+    description = "ka = molarity_h * molarity_a / molarity_ha"
+    output_type = "ka"
+    output_unit = "mol/l"
+    input_sat_maps = [["h", "molarity","mol/l"],
+                      ["a", "molarity", "mol/l"],
+                      ["ha", "molarity", "mol/l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Molarity3_2Ka,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value * self.parameters[1].out_node.value / self.parameters[2].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "kb"
+fx.InputNames = ["molarity_oh", "molarity_a", "molarity_aoh"]
+fx.Function = lambda dbList: dbList[0] * dbList[1] / dbList[2]
+rs.append(fx)
+'''
+class Func_Molarity3_2Kb(Func):
+
+    name = "Molarity3_2Kb"
+    description = "kb = molarity_oh * molarity_a / molarity_aoh"
+    output_type = "kb"
+    output_unit = "mol/l"
+    input_sat_maps = [["oh", "molarity","mol/l"],
+                      ["a", "molarity", "mol/l"],
+                      ["aoh", "molarity", "mol/l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Molarity3_2Kb,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value * self.parameters[1].out_node.value / self.parameters[2].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'absorptivity'
+fx.InputNames = ['molarity', 'depth', 'absorbance']
+fx.Function = lambda dbList: dbList[2] / dbList[0] / dbList[1]
+rs.append(fx)
+'''
+class Func_MolarityDepthAbsorbance2Absorptivity(Func):
+
+    name = "MolarityDepthAbsorbance2Absorptivity"
+    description = "absorbance / (molarity * depth) "
+    output_type = "absorptivity"
+    output_unit = None
+    input_sat_maps = [["target", "molarity","mol/l"],
+                      ["target", "depth", "cm"],
+                      ["target", "absorbance", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MolarityDepthAbsorbance2Absorptivity,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[2].out_node.value /( self.parameters[1].out_node.value *
+                                                   self.parameters[0].out_node.value)
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'depth'
+fx.InputNames = ['absorbance', 'molarity', 'absorptivity']
+fx.Function = lambda dbList: dbList[0] / dbList[1] / dbList[2]
+rs.append(fx)
+'''
+
+class Func_AbsorbanceMolarityAbsorptivity2Depth(Func):
+
+    name = "AbsorbanceMolarityAbsorptivity2Depth"
+    description = "absorbance / (molarity * absorptivity) "
+    output_type = "depth"
+    output_unit = "cm"
+    input_sat_maps = [["target", "absorbance", None],
+                      ["target", "molarity","mol/l"],
+                      ["target", "absorptivity", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_AbsorbanceMolarityAbsorptivity2Depth,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value /( self.parameters[1].out_node.value *
+                                                   self.parameters[2].out_node.value)
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+
+
+'''
+
+fx = Formula()
+fx.OutputName = 'absorbance'
+fx.InputNames = ['molarity', 'depth', 'absorptivity']
+fx.Function = lambda dbList: dbList[0] * dbList[1] * dbList[2]
+rs.append(fx)
+'''
+
+class Func_MolarityDepthAbsorptivity2Absorbance(Func):
+
+    name = "MolarityDepthAbsorptivity2Absorbance"
+    description = "molarity * absorptivity * depth"
+    output_type = "absorbance"
+    output_unit = None
+    input_sat_maps = [["target", "molarity","mol/l"],
+                      ["target", "depth", "cm"],
+                      ["target", "absorptivity", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MolarityDepthAbsorptivity2Absorbance,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value *  self.parameters[1].out_node.value *\
+              self.parameters[2].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+
+'''
+fx = Formula()
+fx.OutputName = 'transmittance'
+fx.InputNames = ['absorbance']
+fx.Function = lambda dbList: (10 ** (2 - dbList[0])) / 100
+rs.append(fx)
+'''
+
+class Func_Absorbance2Transmittance(Func):
+
+    name = "Absorbance2Transmittance"
+    description = "(10 ** (2 - absorbance)) / 100"
+    output_type = "transmittance"
+    output_unit = None
+    input_sat_maps = [["target", "absorbance", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Absorbance2Transmittance,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= (10 ** (2 - self.parameters[0].out_node.value)) / 100
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'dilution_factor'
+fx.InputNames = ['initial_volume', 'final_volume']
+fx.Function = lambda dbList: dbList[1] / dbList[0]
+rs.append(fx)
+'''
+
+class Func_Volume2_2Dilution_factor(Func):
+
+    name = "Volume2_2Dilution_factor"
+    description = "final_volume/initial_volume"
+    output_type = "dilution_factor"
+    output_unit = None
+    input_sat_maps = [["situ_1", "volume", "l"],
+                      ["target", "volume", "l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Volume2_2Dilution_factor,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[1].out_node.value / self.parameters[0].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'electric_current'
+fx.InputNames = ['resistance', 'voltage']
+fx.Function = lambda dbList: dbList[1] / dbList[0]
+rs.append(fx)
+'''
+class Func_ResistanceVoltage2Electric_current(Func):
+
+    name = "ResistanceVoltage2Electric_current"
+    description = "voltage/resistance"
+    output_type = "electric_current"
+    output_unit = "amperes"
+    input_sat_maps = [["target", "resistance", "ohm"],
+                      ["target", "voltage", "v"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_ResistanceVoltage2Electric_current,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[1].out_node.value / self.parameters[0].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+
+fx = Formula()
+fx.OutputName = 'resistance'
+fx.InputNames = ['electric_current', 'voltage']
+fx.Function = lambda dbList: dbList[1] / dbList[0]
+rs.append(fx)
+'''
+class Func_Electric_currentVoltage2Resistance(Func):
+
+    name = "Electric_currentVoltage2Resistance"
+    description = "voltage/electric_current"
+    output_type = "resistance"
+    output_unit = "ohm"
+    input_sat_maps = [["target", "electric_current", "amperes"],
+                      ["target", "voltage", "v"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Electric_currentVoltage2Resistance,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[1].out_node.value / self.parameters[0].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+
+'''
+fx = Formula()
+fx.OutputName = 'voltage'
+fx.InputNames = ['electric_current', 'resistance']
+fx.Function = lambda dbList: dbList[0] * dbList[1]
+rs.append(fx)
+'''
+class Func_Electric_currentResistance2Voltage(Func):
+
+    name = "Electric_currentResistance2Voltage"
+    description = "voltage=electric_current*resistance"
+    output_type = "voltage"
+    output_unit = "v"
+    input_sat_maps = [["target", "electric_current", "amperes"],
+                      ["target", "resistance", "ohm"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Electric_currentResistance2Voltage,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[0].out_node.value * self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'gauge_pressure'
+fx.InputNames = ['density', 'height']
+fx.Function = lambda dbList: dbList[0] * dbList[1] * 9.8 / 1e5
+rs.append(fx)
+'''
+class Func_DensityHeight2Gauge_pressure(Func):
+
+    name = "DensityHeight2Gauge_pressure"
+    description = "dbList[0] * dbList[1] * 9.8 / 1e5"
+    output_type = "gauge_pressure"
+    output_unit = "pa"
+    input_sat_maps = [["target", "density", "g/m^3"],
+                      ["target", "height", "m"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_DensityHeight2Gauge_pressure,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[0].out_node.value * self.parameters[1].out_node.value * 9.8 / 1e5
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+
+'''
+fx = Formula()
+fx.OutputName = 'half-life'
+fx.InputNames = ['mass0', 'mass1', 'time']
+fx.Function = lambda dbList: dbList[2] / (math.log(dbList[1] / dbList[0], 0.5))
+rs.append(fx)
+'''
+class Func_Mass2_Time2HalfLife(Func):
+
+    name = "Mass2_Time2HalfLife"
+    description = "dbList[2] / (math.log(dbList[1] / dbList[0], 0.5))"
+    output_type = "half-life"
+    output_unit = None
+    input_sat_maps = [["situ_1", "mass", "g"],
+                      ["target", "mass", "g"],
+                      ["target","time","s"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Mass2_Time2HalfLife,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[2].out_node.value / \
+               (math.log(self.parameters[1].out_node.value / self.parameters[0].out_node.value, 0.5))
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'melted_time'
+fx.InputNames = ['heat_of_fusion', 'mole', 'power']
+fx.Function = lambda dbList: dbList[0] * dbList[1] / dbList[2]
+rs.append(fx)
+'''
+class Func_Heat_of_fusionMolePower2Melted_time(Func):
+
+    name = "Heat_of_fusionMolePower2Melted_time"
+    description = "dbList[0] * dbList[1] / dbList[2]"
+    output_type = "melted_time"
+    output_unit = "s"
+    input_sat_maps = [["target", "heat_of_fusion", "kj"],
+                      ["target", "mole", "mol"],
+                      ["target","power","watt"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Heat_of_fusionMolePower2Melted_time,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[0].out_node.value * \
+               self.parameters[1].out_node.value / self.parameters[2].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'molar_heat'
+fx.InputNames = ['shc', 'molar_mass']
+fx.Function = lambda dbList: dbList[0] * dbList[1]
+rs.append(fx)
+'''
+class Func_ShcMolar_mass2Molar_heat(Func):
+
+    name = "ShcMolar_mass2Molar_heat"
+    description = "dbList[0] * dbList[1] / dbList[2]"
+    output_type = "molar_heat"
+    output_unit = "j/(mol_·_k)"
+    input_sat_maps = [["target", "specific_heat_capacity", "j"],
+                      ["target", "molar_mass", "g"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_ShcMolar_mass2Molar_heat,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value= self.parameters[0].out_node.value * \
+               self.parameters[1].out_node.value / self.parameters[2].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = 'ph'
+fx.InputNames = ['molecule', 'molarity']
+fx.Function = Formula.CalcPHFromSimpleSolution
+rs.append(fx)
+'''
+class Func_MoleculeMolarity2Ph(Func):
+
+    name = "MoleculeMolarity2Ph"
+    description = "CalcPHFromSimpleSolution"
+    output_type = "ph"
+    output_unit = None
+    input_sat_maps = [["target", "Chemistry_Substance", None],
+                      ["target", "molarity", "mol/l"]]
+
+
+    def CalcPHFromSimpleSolution(self,dbList):
+        molecule = dbList[0]
+        molarity = dbList[1]
+        strongOneAcid = ['HCl','HNO3']
+        strongTwoAcid = ['H2SO4']
+        strongOneAlkali = ['KOH','NaOH']
+        strongTwoAlkali = ['Ca(OH)2']
+        if molecule in strongOneAcid:
+            h = molarity
+            ph = -math.log10(h)
+            return ph
+        elif molecule in strongTwoAcid:
+            h = molarity*2
+            ph = -math.log10(h)
+            return ph
+        elif molecule in strongOneAlkali:
+            oh = molarity
+            ph = 14-(-math.log10(oh))
+            return ph
+        elif molecule in strongTwoAlkali:
+            oh = molarity*2
+            ph = 14-(-math.log10(oh))
+            return ph
+        else:
+            return None
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MoleculeMolarity2Ph,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        molecule=self.parameters[0].out_node.__str__()
+        value=self.CalcPHFromSimpleSolution([molecule,self.parameters[1].out_node.value])
         self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
         return True

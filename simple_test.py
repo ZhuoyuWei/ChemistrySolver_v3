@@ -12,11 +12,11 @@ if __name__ == '__main__':
     question="How many moles of sodium carbonate are present in 6.80 grams of sodium carbonate?"
     #call http://10.177.74.166:36521/parse?q="" to obtain the parser result
     #parsed_question = requests.get(url='http://10.177.74.166:36521/parse', params={'q': question}).json()
-    parsed_question = requests.get(url='http://10.177.74.166:36523/parse', params={'q': question,
-                                                                                   'format':'new'}).json()
-    print(parsed_question)
+    #parsed_question = requests.get(url='http://10.177.74.166:36523/parse', params={'q': question,
+    #                                                                              'format':'new'}).json()
+    #print(parsed_question)
 
-
+    parsed_question='{"question_variable": [{"type": "physical unit", "value": {"subject": "gold ring", "predicate": "specific_heat_capacity", "unit": "j/(°c_·_g)"}}], "conditions": [{"type": "physical unit", "value": {"subject": "gold ring", "predicate": "mass", "value": "20 g"}}, {"type": "physical unit", "value": {"subject": "boiling water.", "predicate": "mass", "value": "15 g"}}, {"type": "physical unit", "value": {"subject": "boiling water.", "predicate": "mass", "value": "15 g"}}, {"type": "physical unit", "value": {"subject": "water.", "predicate": "temperature", "value": "97 °C."}}, {"type": "physical unit", "value": {"subject": "water.", "predicate": "specific_heat", "value": "4.184 J/(g * °C)."}}]}'
 
     question_varible_edges=generate_edges_from_question_variables(parsed_question['question_variable'])
     print('DEBUG question varible: {}'.format(question_varible_edges))

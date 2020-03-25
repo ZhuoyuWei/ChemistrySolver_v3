@@ -10,4 +10,5 @@ with open('../chemistry_func.py','r',encoding='utf-8') as f:
             count+=1
             print('               {},'.format(name))
 
+
     print('\n\n{}'.format(count))

@@ -28,7 +28,11 @@ def solve_one_question(parsed_question):
     graph.add_name_into_edges_for_all_node()
     graph.print_all_edges()
     func_list=CHEMISTRY_FUNC_LIST
+
+    #print(len(func_list))
     solver=DFSSolver(graph,func_list)
+    #print(solver.func_indexed_by_return_type)
+    #exit(-1)
     predicted=None
     for question_edge in question_varible_edges:
         solved_flag=solver.solving(question_edge)
