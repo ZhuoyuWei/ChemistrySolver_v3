@@ -1,22 +1,4 @@
 
-fx = Formula()
-fx.OutputName = "equilibrium_constant_k"
-fx.InputNames = ["equation", "graph"]
-fx.Function = Formula.EquationKWithMolarity
-rs.append(fx)
-
-fx = Formula()
-fx.OutputName = "equilibrium_constant_k"
-fx.InputNames = ["equation", "graph", "volume"]
-fx.Function = Formula.EquationK
-rs.append(fx)
-
-fx = Formula()
-fx.OutputName = "coefficient"
-fx.InputNames = ["equation", "graph", "molecule"]
-fx.Function = lambda dbList: Formula.GetCoefficient(dbList[0], dbList[2])
-rs.append(fx)
-
 
 
 
@@ -47,11 +29,6 @@ fx.Function = lambda dbList: math.log(dbList[1] / dbList[0]) * (-8.314) / (1 / d
 rs.append(fx)
 
 
-fx = Formula()
-fx.OutputName = "osmolarity"
-fx.InputNames = ["molarity", "molecule"]
-fx.Function = lambda dbList: dbList[0] * Utils.Utils.CalcOSCoefficient(dbList[1])
-rs.append(fx)
 
 fx = Formula()
 fx.OutputName = 'diameter'

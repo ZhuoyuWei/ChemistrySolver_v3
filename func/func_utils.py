@@ -19,6 +19,9 @@ class Func:
         self.parameters=[]
 
     def sat_running(self):
+        return self._sat_running(self.__class__.input_sat_maps)
+
+    def _sat_running(self,current_input_sat_maps):
         '''
         check whether the inputs can satisfy this func running conditions, and update self.parameters by self.inputs
         so you can call unsat_parameters following calling sat_running
@@ -27,7 +30,7 @@ class Func:
         self.target_node=self.outputs[0].in_node
         self.target_property=self.outputs[0].predicate #useless
 
-        self.input_unsat_map = copy.deepcopy(self.__class__.input_sat_maps)
+        self.input_unsat_map = copy.deepcopy(current_input_sat_maps)
         self.parameters = [None]*len(self.input_unsat_map)
 
         fill_count=0
@@ -53,7 +56,7 @@ class Func:
 
         if fill_count >= len(self.parameters):
             self.input_unsat_map=[]
-            self.all_unit_converting()
+            self.all_unit_converting(current_input_sat_maps)
             return True
         else:
             tmplist=self.input_unsat_map
@@ -71,12 +74,12 @@ class Func:
             target=old_pu
         return target
 
-    def all_unit_converting(self):
+    def all_unit_converting(self,current_input_sat_maps):
 
         for i,parameter in enumerate(self.parameters):
-            print(self.__class__.input_sat_maps[i])
+            print(current_input_sat_maps[i])
             self.parameters[i].out_node=self.unit_converting(self.parameters[i].out_node,
-                                                             self.__class__.input_sat_maps[i][2])
+                                                             current_input_sat_maps[i][2])
 
 
     def run_func(self):
@@ -97,3 +100,9 @@ class Func:
         '''
 
         raise NotImplementedError
+
+
+    def __str__(self):
+        return self.__class__.name
+
+

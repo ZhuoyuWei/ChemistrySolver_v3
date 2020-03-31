@@ -15,14 +15,22 @@ predict_list=[]
 
 question_list=[]
 
+#answer_index=1
+#predict_index=2
+#question_index=0
+
+answer_index=5
+predict_index=6
+question_index=1
+
 with codecs.open(sys.argv[1],'r','utf-8') as f:
     for line in f:
         ss = line.strip().split('\t')
-        answer = ss[5]
+        answer = ss[answer_index]
         answer_list.append(answer)
-        predict = ss[6]
+        predict = ss[predict_index]
         predict_list.append(predict)
-        question=ss[1]
+        question=ss[answer_index]
         question_list.append(question)
 
 
@@ -39,6 +47,9 @@ def cal_correct(answer,predict,question,fdebug):
     answer_PU = PU.parse_pu_from_text(answer)
     predict_PU = PU.parse_pu_from_text(predict)
     if answer_PU is not None and predict_PU is not None:
+        #if math.fabs(answer_PU.value - predict_PU.value) < math.fabs(answer_PU.value) * 0.1\
+        #        and str(predict_PU.unit) == str(answer_PU.unit):
+        #    return True
         if math.fabs(answer_PU.value - predict_PU.value) < math.fabs(answer_PU.value) * 0.1:
             return True
 
@@ -73,7 +84,7 @@ def cal_correct(answer,predict,question,fdebug):
                 predict_unit = ''.join(predict[unit_index:])
                 break
             unit_index-=1
-        #if predict_unit == answer_unit and math.fabs(answer_value-predict_value)<math.fabs(answer_value)*0.05:
+        #if predict_unit == answer_unit and math.fabs(answer_value-predict_value)<math.fabs(answer_value)*0.1:
         #    return True
         if flag and math.fabs(answer_value - predict_value) < math.fabs(answer_value) * 0.1:
             return True

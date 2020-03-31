@@ -4,10 +4,16 @@ from model.edge import Edge
 from domain.chemistry_utils import PU,CE
 
 
+def remove_end_symbol(text):
+    if text.endswith('.') or text.endswith(',') or text.endswith('?'):
+        text = text[:-1]
+    return text
+
 def generate_edges_from_question_variables(question_varaibles):
     variable_edges=[]
     for variable in question_varaibles:
         edge=None
+        variable['value']['subject']=remove_end_symbol(variable['value']['subject'])
         if variable['type'] == 'physical unit':
             #physical_unit_pattern=re.compile(r"([\w ]+) \[OF\] ([\w ]+) \[IN\] ([\w ]+)")
             #physical_unit_match=physical_unit_pattern.search(variable['value'])
@@ -38,6 +44,8 @@ def generate_edges_from_conditions(conditions):
     condition_edges=[]
     for condition in conditions:
         edge=None
+        if condition["type"] != "other":
+            condition['value']['subject']=remove_end_symbol(condition['value']['subject'])
         if condition["type"] == "physical unit":
             #physical_unit_pattern=re.compile(r"([\w ]+) \[OF\] ([\w ]+) \[=\](.*)")
             #physical_unit_match=physical_unit_pattern.search(condition['value'])

@@ -24,7 +24,7 @@ class Func_Name2CE(Func):
 
     name = "Name2CE"
     description = "Convert a substance name to its chemical equation (CE)"
-    output_type="Chemistry_Substance"
+    output_type="Chemistry_Formula"
     output_unit = None
     input_sat_maps = [["target", "name", None]]
     NAME2CE=None
@@ -63,7 +63,7 @@ class Func_Formula2CE(Func):
 
     name = "Formula2CE"
     description = "Convert a substance (chemical) formula to its chemical equation/formula (CE/CF)"
-    output_type="Chemistry_Substance"
+    output_type="Chemistry_Formula"
     output_unit=None
     input_sat_maps = [["target", "formula",None]]
     NAME2CE=None
@@ -171,7 +171,7 @@ class Func_CE2MolarMass(Func):
     description = "from the CE of a substance to its MolarMass"
     output_type="molar_mass"
     output_unit='g/mol'
-    input_sat_maps = [["target", "Chemistry_Substance",None]]
+    input_sat_maps = [["target", "Chemistry_Formula",None]]
 
 
     def __init__(self,inputs,outputs=None):
@@ -470,6 +470,24 @@ class Func_MoleVolume2Molarity(Func):
 
     def __init__(self,inputs,outputs=None):
         super(Func_MoleVolume2Molarity,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=self.parameters[0].out_node.value / self.parameters[1].out_node.value
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+class Func_MoleVolume2Concentration(Func):
+
+    name = "MoleVolume2Concentration"
+    description = "mole / volume"
+    output_type = "concentration"
+    output_unit = "mol/l"
+    input_sat_maps = [["target", "mole","mol"], ["target", "volume", "l"]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_MoleVolume2Concentration,self).__init__(inputs,outputs)
 
     def run_func(self):
         if not self.sat_running():
@@ -962,6 +980,9 @@ class Func_MassMass2Mass_percent(Func):
         self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
         return True
 
+
+
+
 '''
 fx = Formula()
 fx.OutputName = "mole_percent"
@@ -1054,8 +1075,8 @@ class Func_AtomMoleculeMole2Mole(Func):
     description = "atom mole in molecule"
     output_type = "mole"
     output_unit = "mol"
-    input_sat_maps = [["atom", "Chemistry_Substance",None],
-                      ["molecule", "Chemistry_Substance",None],
+    input_sat_maps = [["atom", "Chemistry_Formula",None],
+                      ["molecule", "Chemistry_Formula",None],
                       ["target","mole","mol"]]
 
     def __init__(self,inputs,outputs=None):
@@ -1076,6 +1097,7 @@ class Func_AtomMoleculeMole2Mole(Func):
         value=self.parameters[0].out_node.value * count
         self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
         return True
+
 
 '''
 fx = Formula()
@@ -1662,7 +1684,7 @@ class Func_MoleculeMolarity2Ph(Func):
     description = "CalcPHFromSimpleSolution"
     output_type = "ph"
     output_unit = None
-    input_sat_maps = [["target", "Chemistry_Substance", None],
+    input_sat_maps = [["target", "Chemistry_Formula", None],
                       ["target", "molarity", "mol/l"]]
 
 
@@ -1701,4 +1723,182 @@ class Func_MoleculeMolarity2Ph(Func):
         molecule=self.parameters[0].out_node.__str__()
         value=self.CalcPHFromSimpleSolution([molecule,self.parameters[1].out_node.value])
         self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "equilibrium_constant_k"
+fx.InputNames = ["equation", "graph"]
+fx.Function = Formula.EquationKWithMolarity
+rs.append(fx)
+
+fx = Formula()
+fx.OutputName = "equilibrium_constant_k"
+fx.InputNames = ["equation", "graph", "volume"]
+fx.Function = Formula.EquationK
+rs.append(fx)
+'''
+class Func_Chemistry_Equation2K(Func):
+
+    name = "Chemistry_Equation2K"
+    description = ""
+    output_type = "equilibrium_constant_k"
+    output_unit = None
+    input_sat_maps = [["target", "Chemistry_Equation", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Chemistry_Equation2K,self).__init__(inputs,outputs)
+
+    def sat_running(self):
+        flag=super(Func_Chemistry_Equation2K,self).sat_running()
+        if flag:
+            ce=self.parameters[0].out_node
+            new_input_sat_maps=[]
+            self.ce=ce
+            substances=ce.left_substances.substances + ce.right_substances.substances
+            for item in substances:
+                substance=item['matter']
+                new_input_sat_maps.append([substance.__str__(),'molarity','mol/l'])
+            flag=super(Func_Chemistry_Equation2K,self)._sat_running(new_input_sat_maps)
+
+        return flag
+
+
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=1
+        index=0
+
+        for substance in self.ce.left_substances.substances:
+            value*=math.pow(self.parameters[index].out_node.value,substance['count'])
+            index+=1
+        value=1/value
+        for substance in self.ce.right_substances.substances:
+            value*=math.pow(self.parameters[index].out_node.value,substance['count'])
+            index+=1
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+'''
+fx = Formula()
+fx.OutputName = "coefficient"
+fx.InputNames = ["equation", "graph", "molecule"]
+fx.Function = lambda dbList: Formula.GetCoefficient(dbList[0], dbList[2])
+rs.append(fx)
+'''
+class Func_GetCoefficient(Func):
+
+    name = "GetCoefficient"
+    description = "get coefficient of substance from equation"
+    output_type = "coefficient"
+    output_unit = None
+    input_sat_maps = [["target", "Chemistry_Formula", None],
+                      ["equation", "Chemistry_Equation", None]]
+
+
+
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_GetCoefficient,self).__init__(inputs,outputs)
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        molecule=self.parameters[0].out_node.__str__()
+        ce=self.parameters[1].out_node
+        value=1
+        substances = ce.left_substances.substances + ce.right_substances.substances
+        for item in substances:
+            substance = item['matter']
+            if substance.__str__() == molecule:
+                value=item['count']
+                break
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+
+class Func_Chemistry_Equation2K(Func):
+
+    name = "Chemistry_Equation2K"
+    description = ""
+    output_type = "equilibrium_constant_k"
+    output_unit = None
+    input_sat_maps = [["target", "Chemistry_Equation", None]]
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Chemistry_Equation2K,self).__init__(inputs,outputs)
+
+    def sat_running(self):
+        flag=super(Func_Chemistry_Equation2K,self).sat_running()
+        if flag:
+            ce=self.parameters[0].out_node
+            new_input_sat_maps=[]
+            self.ce=ce
+            substances=ce.left_substances.substances + ce.right_substances.substances
+            for item in substances:
+                substance=item['matter']
+                new_input_sat_maps.append([substance.__str__(),'molarity','mol/l'])
+            flag=super(Func_Chemistry_Equation2K,self)._sat_running(new_input_sat_maps)
+
+        return flag
+
+
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+        value=1
+        index=0
+
+        for substance in self.ce.left_substances.substances:
+            value*=math.pow(self.parameters[index].out_node.value,substance['count'])
+            index+=1
+        value=1/value
+        for substance in self.ce.right_substances.substances:
+            value*=math.pow(self.parameters[index].out_node.value,substance['count'])
+            index+=1
+        self.outputs[0].out_node=PU(value=value,unit=self.__class__.output_unit)
+        return True
+
+#oxidation_number
+
+class Func_Chemistry_Formula2Oxidation_number(Func):
+
+    name = "Chemistry_Formula2Oxidation_number"
+    description = "tmp: a simple dict"
+    output_type = "oxidation_number"
+    output_unit = None
+    input_sat_maps = [["target", "Chemistry_Formula", None]]
+
+    ele2oxidation=None
+
+    def __init__(self,inputs,outputs=None):
+        super(Func_Chemistry_Formula2Oxidation_number,self).__init__(inputs,outputs)
+
+
+    def run_func(self):
+        if not self.sat_running():
+            return False
+
+        def read_oxidation_from_resources():
+            ele2oxidation = {}
+            with open('domain/resources/oxidation', 'r', encoding='utf-8') as f:
+                for line in f:
+                    ss = line.strip().split('\t')
+                    if len(ss) == 2:
+                        ele2oxidation[ss[0]] = int(ss[1])
+            return ele2oxidation
+
+        if self.__class__.ele2oxidation is None:
+            self.__class__.ele2oxidation = read_oxidation_from_resources()
+
+        cf = self.parameters[0].out_node
+        value = 0
+        for ele in cf.elements:
+            value += ele['count'] * self.__class__.ele2oxidation.get(ele['element'], 0)
+
+        self.outputs[0].out_node = PU(value=value, unit=self.__class__.output_unit)
+
         return True

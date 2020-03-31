@@ -9,11 +9,18 @@ from domain.chemistry_utils import (ChemicalSubstance,
                                     ChemicalEquation)
 from domain.math_utils import solve_linear_equations
 
-LEFT_RIGHT_DELIMITERS_LIST=[r'-->', r'->', '==', '=']
+LEFT_RIGHT_DELIMITERS_LIST=[r'-->', r'->', '==', '=', '=>']
+
+
+def remove_end_symbol(text):
+    if text.endswith('.') or text.endswith(',') or text.endswith('?'):
+        text = text[:-1]
+    return text
 
 def ParseSubstance(matterText=None,**kwargs):
     if matterText == None:
         return None
+    matterText=remove_end_symbol((matterText))
     pattern = re.compile('([A-Z]{1}[a-z]*)([0-9]*)')
     matches=re.findall(pattern, matterText)
     elements=[]
@@ -34,6 +41,7 @@ def ParseSubstance(matterText=None,**kwargs):
 def ParseMixture(mixtureText=None,**kwargs):
     if mixtureText == None:
         return {'mixture':None}
+    mixtureText=remove_end_symbol(mixtureText)
     mixtureText = mixtureText.replace('(g)', '').replace(' ', '')
     matter_spans = mixtureText.strip().split('+')
     matters=[]
@@ -71,6 +79,7 @@ def ParseMixture(mixtureText=None,**kwargs):
 def ParseChemicalEquation(chemicalEquationText=None,**kwargs):
     if chemicalEquationText == None:
         return {'chemicalEquation':None}
+    chemicalEquationText=remove_end_symbol(chemicalEquationText)
     mixture_texts=None
     for delimiter in LEFT_RIGHT_DELIMITERS_LIST:
         if delimiter in chemicalEquationText:
