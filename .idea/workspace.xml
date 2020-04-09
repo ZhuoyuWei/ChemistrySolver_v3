@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="0.169 precision on dev">
+    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="stable baseline2 at 0402">
+      <change afterPath="$PROJECT_DIR$/solving/rl_solver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/solving/rl_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solving/solver_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/solving/solver_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,12 +17,12 @@
     <session id="-578715192">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="14" />
+          <entry key="project.closed" value="23" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="18" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -27,7 +30,7 @@
           <entry key="bak" value="2" />
           <entry key="log" value="7" />
           <entry key="oxi" value="1" />
-          <entry key="py" value="156" />
+          <entry key="py" value="164" />
           <entry key="tsv" value="7" />
           <entry key="vocabs" value="4" />
         </counts>
@@ -35,22 +38,27 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="21" />
-          <entry key="Python" value="156" />
+          <entry key="Python" value="164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
           <entry key="log" value="72" />
-          <entry key="py" value="18850" />
+          <entry key="py" value="21324" />
           <entry key="tsv" value="2" />
-          <entry key="txt" value="601" />
+          <entry key="txt" value="629" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="678" />
-          <entry key="Python" value="18850" />
+          <entry key="PLAIN_TEXT" value="706" />
+          <entry key="Python" value="21324" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -60,100 +68,81 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/batch_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+            <state relative-caret-position="318">
+              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+              <folding>
+                <element signature="e#80#91#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
+        <entry file="file://$PROJECT_DIR$/solving/rl_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="302" column="27" lean-forward="true" selection-start-line="17" selection-end-line="318" />
+            <state relative-caret-position="-464">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
               <folding>
-                <element signature="e#29#38#0" expanded="true" />
-                <element signature="e#11312#13069#0" />
-                <element signature="e#13100#14067#0" />
-                <marker date="1585554324791" expanded="true" signature="4581:4653" ph="..." />
-                <marker date="1585554324791" expanded="true" signature="6682:7032" ph="..." />
-                <marker date="1585554324791" expanded="true" signature="7067:7221" ph="..." />
+                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1586418665468" expanded="true" signature="159:164" ph="..." />
+                <marker date="1586418665468" expanded="true" signature="188:193" ph="..." />
+                <marker date="1586418665468" expanded="true" signature="188:499" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
+        <entry file="file://$PROJECT_DIR$/solving/rl_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="36" column="8" lean-forward="true" selection-start-line="35" selection-end-line="40" selection-end-column="15" />
+            <state relative-caret-position="523">
+              <caret line="194" lean-forward="true" selection-start-line="194" selection-end-line="194" />
               <folding>
-                <marker date="1585126191506" expanded="true" signature="57:62" ph="..." />
-                <marker date="1585126191506" expanded="true" signature="226:555" ph="..." />
+                <marker date="1586424556905" expanded="true" signature="786:3259" ph="..." />
+                <marker date="1586424556905" expanded="true" signature="814:854" ph="..." />
+                <marker date="1586424556905" expanded="true" signature="1607:1616" ph="..." />
+                <marker date="1586424556905" expanded="true" signature="2345:2354" ph="..." />
+                <marker date="1586424556905" expanded="true" signature="4453:4462" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
+        <entry file="file://$PROJECT_DIR$/model/graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="87" />
+            <state relative-caret-position="1701">
+              <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/func_utils.py">
+        <entry file="file://$PROJECT_DIR$/solving/dfs_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2058">
-              <caret line="99" column="11" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
+            <state relative-caret-position="462">
+              <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="47" />
               <folding>
-                <marker date="1585557730064" expanded="true" signature="533:603" ph="..." />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/adaption/__init__.py">
+        <entry file="file://$PROJECT_DIR$/solving/__init__.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/__init__.py">
+        <entry file="file://$PROJECT_DIR$/solving/solver_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1449">
-              <caret line="69" column="55" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/adaption/reminder_old.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/resources/oxidation">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/resources/predicates.vocabs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2373">
-              <caret line="113" column="3" selection-start-line="113" selection-end-line="113" selection-end-column="16" />
+            <state relative-caret-position="21">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+              <folding>
+                <marker date="1586251130376" expanded="true" signature="37:55" ph="..." />
+                <marker date="1586251130376" expanded="true" signature="74:113" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,7 +158,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>molar_mas</find>
       <find>&quot;ka&quot;</find>
       <find>input_sat_maps</find>
       <find>[&quot;target&quot;, &quot;name&quot;]</find>
@@ -199,10 +187,16 @@
       <find>molarity_</find>
       <find>massmass</find>
       <find>pres</find>
+      <find>function</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -213,7 +207,6 @@
         <option value="$PROJECT_DIR$/model/Node.py" />
         <option value="$PROJECT_DIR$/online_test.py" />
         <option value="$PROJECT_DIR$/solving/online_test.py" />
-        <option value="$PROJECT_DIR$/solving/solver_utils.py" />
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/utils/chemistry_utils.py" />
         <option value="$PROJECT_DIR$/func/tt.py" />
@@ -248,14 +241,18 @@
         <option value="$PROJECT_DIR$/func/chemistry_func.py" />
         <option value="$PROJECT_DIR$/func/func_utils.py" />
         <option value="$PROJECT_DIR$/batch_test.py" />
+        <option value="$PROJECT_DIR$/solving/rl_env.py" />
+        <option value="$PROJECT_DIR$/solving/solver_utils.py" />
+        <option value="$PROJECT_DIR$/solving/rl_solver.py" />
+        <option value="$PROJECT_DIR$/solving/rl_util.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1023" />
-    <option name="y" value="-12" />
-    <option name="width" value="1149" />
-    <option name="height" value="1455" />
+    <option name="x" value="141" />
+    <option name="y" value="123" />
+    <option name="width" value="1938" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -265,7 +262,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,34 +272,7 @@
             <path>
               <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
               <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
-              <item name="func" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
-              <item name="func" type="462c0819:PsiDirectoryNode" />
-              <item name="adaption" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChemistrySolver_v3" type="462c0819:PsiDirectoryNode" />
-              <item name="parse" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChemistrySolver_v3" type="b2602c69:ProjectViewProjectNode" />
@@ -314,6 +283,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,28 +309,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.collect_function_names_from_chemistry_func">
-    <configuration name="chemistry_parse" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ChemistrySolver_v3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/chemistry_parse.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.rl_solver">
     <configuration name="chemistry_utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ChemistrySolver_v3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -424,6 +373,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="rl_solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ChemistrySolver_v3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/solving" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/solving/rl_solver.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="tt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ChemistrySolver_v3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -447,18 +417,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.collect_function_names_from_chemistry_func" />
-      <item itemvalue="Python.chemistry_parse" />
       <item itemvalue="Python.tt" />
       <item itemvalue="Python.chemistry_utils" />
       <item itemvalue="Python.func_convert_tool" />
+      <item itemvalue="Python.rl_solver" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.rl_solver" />
         <item itemvalue="Python.collect_function_names_from_chemistry_func" />
         <item itemvalue="Python.func_convert_tool" />
         <item itemvalue="Python.chemistry_utils" />
         <item itemvalue="Python.tt" />
-        <item itemvalue="Python.chemistry_parse" />
       </list>
     </recent_temporary>
   </component>
@@ -627,16 +597,22 @@
       <option name="project" value="LOCAL" />
       <updated>1585618896300</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="stable baseline2 at 0402">
+      <created>1585799211134</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1585799211137</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1519" height="977" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Structure" order="1" weight="0.19703104" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.19298245" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.16261809" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32819906" />
@@ -655,11 +631,11 @@
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info id="Structure" order="1" weight="0.24966262" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.19298245" />
+      <window_info id="Structure" order="1" weight="0.19703104" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.16261809" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32819906" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32819906" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3992891" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -700,7 +676,8 @@
     <MESSAGE value="add units_added.tsv" />
     <MESSAGE value="add 73 functions in total" />
     <MESSAGE value="0.169 precision on dev" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.169 precision on dev" />
+    <MESSAGE value="stable baseline2 at 0402" />
+    <option name="LAST_COMMIT_MESSAGE" value="stable baseline2 at 0402" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -720,9 +697,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/model/HyperGraph.py" />
-    <entry file="file://$PROJECT_DIR$/solving/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/parse/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -737,15 +711,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="107" selection-start-line="42" selection-start-column="107" selection-end-line="42" selection-end-column="107" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor />
           <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="107" selection-start-line="42" selection-start-column="107" selection-end-line="42" selection-end-column="107" />
         </state>
       </provider>
     </entry>
@@ -781,13 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="368" column="4" lean-forward="true" selection-start-line="368" selection-start-column="4" selection-end-line="368" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solving/solver_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -878,13 +845,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/func/adaption/version_2_old_function.log.py" />
-    <entry file="file://$PROJECT_DIR$/model/graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/chemistry_evaluate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1193">
@@ -903,17 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39900">
           <caret line="1903" column="19" selection-start-line="1903" selection-start-column="19" selection-end-line="1903" selection-end-column="19" />
-          <folding>
-            <element signature="e#168#179#0" expanded="true" />
-            <marker date="1585556552711" expanded="true" signature="67811:67817" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solving/dfs_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="108" column="63" selection-start-line="108" selection-start-column="63" selection-end-line="108" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -924,13 +873,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6300">
+          <caret line="302" column="27" lean-forward="true" selection-start-line="17" selection-end-line="318" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/func/func_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2058">
           <caret line="99" column="11" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
-          <folding>
-            <marker date="1585557730064" expanded="true" signature="533:603" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -965,42 +925,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
+    <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/batch_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="302" column="27" lean-forward="true" selection-start-line="17" selection-end-line="318" />
+        <state relative-caret-position="246">
+          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding>
-            <element signature="e#29#38#0" expanded="true" />
-            <element signature="e#11312#13069#0" />
-            <element signature="e#13100#14067#0" />
-            <marker date="1585554324791" expanded="true" signature="4581:4653" ph="..." />
-            <marker date="1585554324791" expanded="true" signature="6682:7032" ph="..." />
-            <marker date="1585554324791" expanded="true" signature="7067:7221" ph="..." />
+            <marker date="1585126191506" expanded="true" signature="57:62" ph="..." />
+            <marker date="1585126191506" expanded="true" signature="226:555" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
+    <entry file="file://$PROJECT_DIR$/solving/rl_env.py" />
+    <entry file="file://$PROJECT_DIR$/solving/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="36" column="8" lean-forward="true" selection-start-line="35" selection-end-line="40" selection-end-column="15" />
+        <state relative-caret-position="318">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
           <folding>
-            <marker date="1585126191506" expanded="true" signature="57:62" ph="..." />
-            <marker date="1585126191506" expanded="true" signature="226:555" ph="..." />
+            <element signature="e#80#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solving/dfs_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1701">
+          <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solving/solver_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding>
+            <marker date="1586251130376" expanded="true" signature="37:55" ph="..." />
+            <marker date="1586251130376" expanded="true" signature="74:113" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solving/rl_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1586418665468" expanded="true" signature="159:164" ph="..." />
+            <marker date="1586418665468" expanded="true" signature="188:193" ph="..." />
+            <marker date="1586418665468" expanded="true" signature="188:499" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solving/rl_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="194" lean-forward="true" selection-start-line="194" selection-end-line="194" />
+          <folding>
+            <marker date="1586424556905" expanded="true" signature="786:3259" ph="..." />
+            <marker date="1586424556905" expanded="true" signature="814:854" ph="..." />
+            <marker date="1586424556905" expanded="true" signature="1607:1616" ph="..." />
+            <marker date="1586424556905" expanded="true" signature="2345:2354" ph="..." />
+            <marker date="1586424556905" expanded="true" signature="4453:4462" ph="..." />
           </folding>
         </state>
       </provider>
