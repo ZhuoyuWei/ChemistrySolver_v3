@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="0.169 precision on dev">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="1593dce8-bc3d-43ca-8ac8-0823adf31105" name="Default" comment="build the framework for action space">
+      <change afterPath="$PROJECT_DIR$/model/GNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solving/rl_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/solving/rl_solver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solving/rl_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/solving/rl_util.py" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,12 +22,21 @@
     <session id="-578715192">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+<<<<<<< Updated upstream
           <entry key="project.closed" value="19" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="14" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.opened" value="19" />
+=======
+          <entry key="project.closed" value="26" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="20" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="26" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -27,7 +44,11 @@
           <entry key="bak" value="2" />
           <entry key="log" value="7" />
           <entry key="oxi" value="1" />
+<<<<<<< Updated upstream
           <entry key="py" value="156" />
+=======
+          <entry key="py" value="172" />
+>>>>>>> Stashed changes
           <entry key="tsv" value="7" />
           <entry key="vocabs" value="4" />
         </counts>
@@ -35,38 +56,68 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="21" />
+<<<<<<< Updated upstream
           <entry key="Python" value="156" />
+=======
+          <entry key="Python" value="172" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
           <entry key="log" value="72" />
+<<<<<<< Updated upstream
           <entry key="py" value="18850" />
           <entry key="tsv" value="2" />
           <entry key="txt" value="601" />
+=======
+          <entry key="py" value="23144" />
+          <entry key="tsv" value="2" />
+          <entry key="txt" value="668" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+<<<<<<< Updated upstream
           <entry key="PLAIN_TEXT" value="678" />
           <entry key="Python" value="18850" />
+=======
+          <entry key="PLAIN_TEXT" value="745" />
+          <entry key="Python" value="23144" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/batch_test.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/solving/rl_solver.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="252">
               <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+=======
+            <state relative-caret-position="586">
+              <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1586501214907" expanded="true" signature="543:547" ph="..." />
+              </folding>
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/domain/chemistry_utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="358">
@@ -78,11 +129,22 @@
                 <marker date="1585554324791" expanded="true" signature="4581:4653" ph="..." />
                 <marker date="1585554324791" expanded="true" signature="6682:7032" ph="..." />
                 <marker date="1585554324791" expanded="true" signature="7067:7221" ph="..." />
+=======
+        <entry file="file://$PROJECT_DIR$/model/GNN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+                <marker date="1586500626821" expanded="true" signature="33:88" ph="..." />
+                <marker date="1586500626821" expanded="true" signature="109:114" ph="..." />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,33 +153,62 @@
               <folding>
                 <marker date="1585126191506" expanded="true" signature="57:62" ph="..." />
                 <marker date="1585126191506" expanded="true" signature="226:555" ph="..." />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/graph.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1722">
+              <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
               <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="87" />
+=======
+        <entry file="file://$PROJECT_DIR$/solving/dfs_solver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1029">
+              <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/func/func_utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2058">
               <caret line="99" column="11" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
               <folding>
                 <marker date="1585557730064" expanded="true" signature="533:603" ph="..." />
+=======
+        <entry file="file://$PROJECT_DIR$/batch_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+              <folding>
+                <element signature="e#80#91#0" expanded="true" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/func/adaption/__init__.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -154,6 +245,34 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2373">
               <caret line="113" column="3" selection-start-line="113" selection-end-line="113" selection-end-column="16" />
+=======
+        <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="5" selection-start-line="3" selection-end-line="3" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/edge.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/solving/rl_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2329">
+              <caret line="211" column="25" lean-forward="true" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+                <marker date="1586499016590" expanded="true" signature="5978:5983" ph="..." />
+              </folding>
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -248,6 +367,14 @@
         <option value="$PROJECT_DIR$/func/chemistry_func.py" />
         <option value="$PROJECT_DIR$/func/func_utils.py" />
         <option value="$PROJECT_DIR$/batch_test.py" />
+<<<<<<< Updated upstream
+=======
+        <option value="$PROJECT_DIR$/solving/rl_env.py" />
+        <option value="$PROJECT_DIR$/solving/solver_utils.py" />
+        <option value="$PROJECT_DIR$/solving/rl_util.py" />
+        <option value="$PROJECT_DIR$/model/GNN.py" />
+        <option value="$PROJECT_DIR$/solving/rl_solver.py" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -627,7 +754,25 @@
       <option name="project" value="LOCAL" />
       <updated>1585618896300</updated>
     </task>
+<<<<<<< Updated upstream
     <option name="localTasksCounter" value="23" />
+=======
+    <task id="LOCAL-00023" summary="stable baseline2 at 0402">
+      <created>1585799211134</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1585799211137</updated>
+    </task>
+    <task id="LOCAL-00024" summary="build the framework for action space">
+      <created>1586425024125</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1586425024126</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
+>>>>>>> Stashed changes
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -700,7 +845,13 @@
     <MESSAGE value="add units_added.tsv" />
     <MESSAGE value="add 73 functions in total" />
     <MESSAGE value="0.169 precision on dev" />
+<<<<<<< Updated upstream
     <option name="LAST_COMMIT_MESSAGE" value="0.169 precision on dev" />
+=======
+    <MESSAGE value="stable baseline2 at 0402" />
+    <MESSAGE value="build the framework for action space" />
+    <option name="LAST_COMMIT_MESSAGE" value="build the framework for action space" />
+>>>>>>> Stashed changes
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -746,13 +897,6 @@
         <state split_layout="FIRST">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/edge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -917,6 +1061,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/func/adaption/collect_function_names_from_chemistry_func.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -924,6 +1069,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/func/func_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2058">
@@ -972,6 +1119,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/batch_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -990,10 +1138,91 @@
             <marker date="1585554324791" expanded="true" signature="4581:4653" ph="..." />
             <marker date="1585554324791" expanded="true" signature="6682:7032" ph="..." />
             <marker date="1585554324791" expanded="true" signature="7067:7221" ph="..." />
+=======
+    <entry file="file://$PROJECT_DIR$/solving/rl_env.py" />
+    <entry file="file://$PROJECT_DIR$/solving/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solving/solver_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding>
+            <marker date="1586251130376" expanded="true" signature="37:55" ph="..." />
+            <marker date="1586251130376" expanded="true" signature="74:113" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solving/dfs_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="e#80#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/edge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1722">
+          <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/parse_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="5" selection-start-line="3" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solving/rl_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2329">
+          <caret line="211" column="25" lean-forward="true" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1586499016590" expanded="true" signature="5978:5983" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/GNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1586500626821" expanded="true" signature="33:88" ph="..." />
+            <marker date="1586500626821" expanded="true" signature="109:114" ph="..." />
+>>>>>>> Stashed changes
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/domain/math_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -1001,6 +1230,15 @@
           <folding>
             <marker date="1585126191506" expanded="true" signature="57:62" ph="..." />
             <marker date="1585126191506" expanded="true" signature="226:555" ph="..." />
+=======
+    <entry file="file://$PROJECT_DIR$/solving/rl_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1586501214907" expanded="true" signature="543:547" ph="..." />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
