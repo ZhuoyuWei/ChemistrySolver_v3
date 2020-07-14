@@ -76,5 +76,5 @@ def main():
     print(predicted)
 
 if __name__ == "__main__":
-    main()
-    #web_serving()
+    #main()
+    web_serving()
