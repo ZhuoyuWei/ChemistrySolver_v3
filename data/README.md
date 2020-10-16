@@ -1,43 +1,40 @@
-# ChemistrySolver_v3
-ChemistrySolver_v3
+# ChemistryQA Data
 
-There are mainly three parts of this system:
 
-    1. model, the graph data structure and graph action.
+In the real world, there are QA tasks which cannot be solved by end-to-end neural networks and is very difficult to translate the natural language to any kind of formal representation which can be solved. Solving Chemical Calculation Problems is such a QA task. We collect about 5,000 chemical calculation problems from SOCRATIC.ORG, which cover more than 200 topic in chemistry. Unlike other QA datasets, we propose to only label the variable asked and conditions from question stem, but do not label the complex solving process. We name the dataset as ChemistryQA. To encourage other researchers to explore various solutions, we keep this task weakly supervised.
 
-        The structure includes the definition of:
 
-            a. Node, including its extend CVT
+## Data
 
-            b. Edge, can be property, relation, or other predicate
+>Data
 
-        The action set includes:
+>>train.tsv
 
-            a. build a situated graph
+>>dev.tsv
 
-            b. _update_graph(self)
+>>test.tsv
 
-            c. split_node(self,node)
+## Evaluation
 
-            d. merge_nodes(self,nodes)
+Please use evaluate.py to evaluate the result as following.
+```
+python evaluate.py {answer_predict.tsv} {answer_index} {predict_index}
+```
+where answer_predict.tsv should contain both correct answer and predicted answer by your method, and answer_index and predict_index represent the columne number of correct answer and predicted answer, respectively. 
 
-            e. infer_one(self,func, in_edges,out_edges)
 
-            f. infer_one_from_(funcs): solving math equation set ?
+## Citation
 
-    2. solving (also independent with chemistry ?), the algorithm of solving problem, which could be DFS, RL or other algorithm
+If you want to use ChemistryQA for your research, please cite as the following. 
 
-    3. func, all functions implement
-
-The ideal status is these three parts are independent/decoupling/transparent with each other.
-
-    New features:
-    1. Separated graph definition [Done]
-    2. Separated function definition [Done]
-    3. Separated solver definition [Done]
-    4. Retire CVT, use Compound Node instead [Pending]
-    5. Retire set const method, use solving equation set instead [Pending]
-    6. RL based Solver [Pending]
-    7. Predicated normalized by/align to Satori Ontology [Pending]
-    8. More domain functions [Pending]
-    9. Extends to structural predicates or merge function and predicate into a universal framework [Pending]
+```
+@inproceedings{
+anonymous2021chemistryqa,
+    title={Chemistry{\{}QA{\}}: A Complex Question Answering Dataset from Chemistry},
+    author={Zhuoyu Wei, Wei Ji, Xiubo Geng, Yining Chen, Baihua Chen, Tao Qin, Daxin Jiang},
+    booktitle={Submitted to International Conference on Learning Representations},
+    year={2021},
+    url={https://openreview.net/forum?id=oeHTRAehiFF},
+    note={under review}
+}
+```
